@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact Where To Go: Corrections, Venues and Press</title>
+<meta name="description" content="Spotted a price that changed, or run a venue we should cover? Tell us and we will check it and update the page.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="../favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon-96.png" sizes="96x96" type="image/png">
+<link rel="icon" href="../favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta name="theme-color" content="#ff5a00">
+<link rel="stylesheet" href="../site.css">
+<style>:root{--accent:var(--ink)}</style>
+<link rel="canonical" href="https://wheretogolondon.co.uk/contact">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Where To Go">
+<meta property="og:title" content="Contact Where To Go: Corrections, Venues and Press">
+<meta property="og:description" content="Spotted a price that changed, or run a venue we should cover? Tell us and we will check it and update the page.">
+<meta property="og:url" content="https://wheretogolondon.co.uk/contact">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Analytics. GA4 property for wheretogo-london.pages.dev -->
+<script>window.WTG_GA_ID='G-XTSQ5XJHTP';</script>
+<script>
+(function(){var id=window.WTG_GA_ID;
+if(!id||id.indexOf('G-')!==0||id==='G-XXXXXXXXXX')return;
+var s=document.createElement('script');s.async=1;
+s.src='https://www.googletagmanager.com/gtag/js?id='+id;document.head.appendChild(s);
+window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};
+gtag('js',new Date());gtag('config',id,{anonymize_ip:true});})();
+</script>
+
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a><div class="staging"><div class="wrap"><div>Where To Go</div><span>Contact</span></div></div><header class="topbar"><div class="wrap">
+<a href="../" class="logo"><svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C7.86 2 4.5 5.36 4.5 9.5c0 5.25 6.24 11.34 6.99 12.02.29.26.7.26.99 0 .75-.68 6.99-6.77 6.99-12.02C19.5 5.36 16.14 2 12 2zm0 10.25a2.75 2.75 0 1 1 0-5.5 2.75 2.75 0 0 1 0 5.5z"/></svg><span>Where To Go</span></a>
+<nav class="nav" aria-label="Main">
+<div class="navdrop"><a href="../activities/">Activities</a><div class="navdrop-panel"><a href="../activities/#darts">Darts and target games</a><a href="../activities/#bowling">Bowling</a><a href="../activities/#golf">Crazy golf</a><a href="../activities/#shuffle">Shuffleboard and ping pong</a><a href="../activities/#cricket">Cricket and football</a><a href="../activities/#bingo">Bingo</a></div></div>
+<a href="../finder/">Finder</a>
+<a href="../about/">About</a>
+<a href="../contact/" aria-current="page">Contact</a>
+<a href="../#compare" class="btn">Compare prices</a>
+</nav></div></header>
+<main id="main"><div class="wrap"><div class="masthead">
+<div class="crumbs"><a href="../">Home</a> / Contact</div>
+<h1 class="long">Get in touch</h1>
+<div class="summary"><ul>
+<li><b>Spotted a price that has changed?</b> Tell us and we will re-check and update the page.</li>
+<li><b>Venue we should cover?</b> We are adding to the list constantly.</li>
+<li><b>Work at a venue?</b> We will always publish accurate figures you send us, but coverage cannot be bought.</li>
+</ul></div>
+</div>
+
+<div class="prose">
+<h2>Send us a message</h2>
+<form class="form" id="contact-form">
+<div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
+<div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+<div class="field"><label for="topic">What is it about?</label>
+<select id="topic" name="topic">
+<option>A price that has changed</option>
+<option>A correction or something we got wrong</option>
+<option>A venue we should cover</option>
+<option>I work at a venue</option>
+<option>Press or partnerships</option>
+<option>Something else</option>
+</select></div>
+<div class="field"><label for="venue">Which venue, if relevant</label><input id="venue" name="venue" type="text"></div>
+<div class="field"><label for="msg">Message</label><textarea id="msg" name="msg" required></textarea></div>
+<button class="btn btn--big" type="submit">Send message</button>
+</form>
+<script>
+document.getElementById('contact-form').addEventListener('submit', function(e){
+e.preventDefault();
+var name=document.getElementById('name').value;
+var email=document.getElementById('email').value;
+var topic=document.getElementById('topic').value;
+var venue=document.getElementById('venue').value;
+var msg=document.getElementById('msg').value;
+var body='From: '+name+' ('+email+')\n'+(venue?'Venue: '+venue+'\n':'')+'\n'+msg;
+window.location.href='mailto:jbush55@hotmail.co.uk?subject='+encodeURIComponent('Where To Go: '+topic)+'&body='+encodeURIComponent(body);
+});
+</script>
+<script>
+(function(){
+var venue=new URLSearchParams(window.location.search).get('venue');
+if(venue)document.getElementById('venue').value=venue;
+})();
+</script>
+
+<h2>For venues and operators</h2>
+<p>If a price on this site is wrong, send us the correct one and we will update it, usually within a couple of days. We will credit the correction on the page.</p>
+<p>What we cannot do is take payment for coverage, placement or a more favourable verdict. If that is the enquiry, we will decline it politely and the page will stay as it is.</p>
+<p>The single most useful thing any operator could send us is <strong>maximum group size per table, lane, oche, box or peg</strong>. Not one venue in our set publishes it, and it is the most common reason a group booking falls apart.</p>
+</div>
+</div>
+</main>
+<footer><div class="wrap">
+<div class="fgrid">
+<div><h3>Activities</h3><ul><li><a href="../activities/#darts">Darts and target games</a></li><li><a href="../activities/#bowling">Bowling</a></li><li><a href="../activities/#golf">Crazy golf</a></li><li><a href="../activities/#shuffle">Shuffleboard and ping pong</a></li><li><a href="../activities/#cricket">Cricket and football</a></li><li><a href="../activities/#bingo">Bingo</a></li></ul></div>
+<div><h3>Venues</h3><ul><li><a href="../activity/flight-club/shoreditch/">Flight Club, Shoreditch</a></li><li><a href="../activity/clays/soho/">Clays, Soho</a></li><li><a href="../activity/rowans/finsbury-park/">Rowans, Finsbury Park</a></li><li><a href="../activity/puttshack/bank/">Puttshack, Bank</a></li><li><a href="../activity/electric-shuffle/london-bridge/">Electric Shuffle, London Bridge</a></li><li><a href="../activity/bounce/farringdon/">Bounce, Farringdon</a></li><li><a href="../activity/sixes-cricket/london-bridge/">Sixes Cricket, London Bridge</a></li><li><a href="../activity/toca-social/the-o2/">Toca Social, The O2</a></li><li><a href="../activity/hijingo/shoreditch/">Hijingo, Shoreditch</a></li><li><a href="../activity/flight-club/victoria/">Flight Club, Victoria</a></li><li><a href="../activity/oche/the-strand/">Oche, The Strand</a></li><li><a href="../activity/all-star-lanes/brick-lane/">All Star Lanes, Brick Lane</a></li><li><a href="../activity/roxy-ball-room/old-street/">Roxy Ball Room, Old Street</a></li><li><a href="../activity/swingers/west-end/">Swingers, West End</a></li><li><a href="../activity/plonk/borough-market/">Plonk, Borough Market</a></li><li><a href="../activity/electric-shuffle/kings-cross/">Electric Shuffle, King's Cross</a></li><li><a href="../activity/bounce/battersea/">Bounce, Battersea</a></li><li><a href="../activity/sixes-cricket/fitzrovia/">Sixes Cricket, Fitzrovia</a></li><li><a href="../activity/dabbers/aldgate/">Dabbers Social Bingo, Aldgate</a></li></ul></div>
+<div><h3>Where To Go</h3><ul>
+<li><a href="../finder/">Venue finder</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../about/#how-we-research">How we research</a></li>
+<li><a href="../about/#money">How we make money</a></li>
+<li><a href="../about/#corrections">Corrections</a></li>
+<li><a href="../contact/">Contact</a></li>
+</ul></div>
+<div><h3>Coming soon</h3><ul>
+<li class="soon">Occasions</li>
+<li class="soon">Areas of London</li>
+<li class="soon">Compare and shortlist</li>
+<li class="soon">Christmas parties</li>
+</ul></div>
+</div>
+<div class="fbase">
+<p>Where To Go is an independent guide to competitive socialising venues in London. Venues cannot pay for coverage or placement.</p>
+<p>Prices are sampled directly from venue booking flows and drift over time. Always check before you book.</p>
+<p>&copy; 2026 Where To Go</p>
+</div>
+</div></footer>
+</body>
+</html>
