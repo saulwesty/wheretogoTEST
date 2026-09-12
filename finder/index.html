@@ -57,7 +57,7 @@ gtag('js',new Date());gtag('config',id,{anonymize_ip:true});})();
 
 <div class="finder">
 <h2>Venue finder</h2>
-<p class="sub">Nineteen venues, filtered on the rules that actually catch groups out</p>
+<p class="sub">Sixteen venues, filtered on the rules that actually catch groups out</p>
 <form id="ffm" novalidate>
 <div class="fgroup">
 <fieldset><legend>How many people</legend>
@@ -104,7 +104,6 @@ gtag('js',new Date());gtag('config',id,{anonymize_ip:true});})();
 <section class="sec"><h2>How the tool decides</h2>
 <p>The ranking is cost per person for your group, cheapest first, using the band we sampled for the slot you picked. Where a venue charges an admission fee on top of the game price, that fee is already in the number.</p>
 <p>A venue is dropped from the results when its own rules would stop your booking. <a href="https://flightclubdarts.com/location-shoreditch" rel="noopener" target="_blank">Flight Club</a> needs a minimum of six players on Friday evenings and all day Saturday at every site except Islington, so a group of four asking for a Friday sees Islington only. <a href="https://www.toca.social/venues/london-o2" rel="noopener" target="_blank">Toca Social</a> advises four or more, so a pair is warned rather than dropped.</p>
-<p><a href="/activity/bounce/farringdon/">Bounce</a> appears without a price because we have not sampled its booking flow yet. We would rather show you the gap than fill it with a number from a press release.</p>
 </section>
 
 <section class="faq"><div class="wrap"><h2>Common questions</h2><dl>
@@ -122,7 +121,7 @@ gtag('js',new Date());gtag('config',id,{anonymize_ip:true});})();
 <footer><div class="wrap">
 <div class="fgrid">
 <div><h3>Activities</h3><ul><li><a href="/activities#darts">Darts and target games</a></li><li><a href="/activities#bowling">Bowling</a></li><li><a href="/activities#golf">Crazy golf</a></li><li><a href="/activities#shuffle">Shuffleboard and ping pong</a></li><li><a href="/activities#cricket">Cricket and football</a></li><li><a href="/activities#bingo">Bingo</a></li></ul></div>
-<div><h3>Venues</h3><ul><li><a href="/activity/flight-club/shoreditch/">Flight Club, Shoreditch</a></li><li><a href="/activity/clays/soho/">Clays, Soho</a></li><li><a href="/activity/rowans/finsbury-park/">Rowans, Finsbury Park</a></li><li><a href="/activity/puttshack/bank/">Puttshack, Bank</a></li><li><a href="/activity/electric-shuffle/london-bridge/">Electric Shuffle, London Bridge</a></li><li><a href="/activity/bounce/farringdon/">Bounce, Farringdon</a></li><li><a href="/activity/sixes-cricket/london-bridge/">Sixes Cricket, London Bridge</a></li><li><a href="/activity/toca-social/the-o2/">Toca Social, The O2</a></li><li><a href="/activity/hijingo/shoreditch/">Hijingo, Shoreditch</a></li><li><a href="/activity/flight-club/victoria/">Flight Club, Victoria</a></li><li><a href="/activity/oche/the-strand/">Oche, The Strand</a></li><li><a href="/activity/all-star-lanes/brick-lane/">All Star Lanes, Brick Lane</a></li><li><a href="/activity/roxy-ball-room/old-street/">Roxy Ball Room, Old Street</a></li><li><a href="/activity/swingers/west-end/">Swingers, West End</a></li><li><a href="/activity/plonk/borough-market/">Plonk, Borough Market</a></li><li><a href="/activity/electric-shuffle/kings-cross/">Electric Shuffle, King's Cross</a></li><li><a href="/activity/bounce/battersea/">Bounce, Battersea</a></li><li><a href="/activity/sixes-cricket/fitzrovia/">Sixes Cricket, Fitzrovia</a></li><li><a href="/activity/dabbers/aldgate/">Dabbers Social Bingo, Aldgate</a></li></ul></div>
+<div><h3>Venues</h3><ul><li><a href="/activity/flight-club/shoreditch/">Flight Club, Shoreditch</a></li><li><a href="/activity/clays/soho/">Clays, Soho</a></li><li><a href="/activity/rowans/finsbury-park/">Rowans, Finsbury Park</a></li><li><a href="/activity/puttshack/bank/">Puttshack, Bank</a></li><li><a href="/activity/electric-shuffle/london-bridge/">Electric Shuffle, London Bridge</a></li><li><a href="/activity/sixes-cricket/london-bridge/">Sixes Cricket, London Bridge</a></li><li><a href="/activity/toca-social/the-o2/">Toca Social, The O2</a></li><li><a href="/activity/hijingo/shoreditch/">Hijingo, Shoreditch</a></li><li><a href="/activity/flight-club/victoria/">Flight Club, Victoria</a></li><li><a href="/activity/oche/the-strand/">Oche, The Strand</a></li><li><a href="/activity/all-star-lanes/brick-lane/">All Star Lanes, Brick Lane</a></li><li><a href="/activity/roxy-ball-room/old-street/">Roxy Ball Room, Old Street</a></li><li><a href="/activity/swingers/west-end/">Swingers, West End</a></li><li><a href="/activity/electric-shuffle/kings-cross/">Electric Shuffle, King's Cross</a></li><li><a href="/activity/bounce/battersea/">Bounce, Battersea</a></li><li><a href="/activity/dabbers/aldgate/">Dabbers Social Bingo, Aldgate</a></li></ul></div>
 <div><h3>Where To Go</h3><ul>
 <li><a href="/finder">Venue finder</a></li>
 <li><a href="/about">About</a></li>
@@ -196,21 +195,13 @@ var VENUES = [
    why:'Everyone faces the front and a host controls the pace, which works well for a group who do not know each other yet.',
    note:'Closed Mondays. Tuesday and Sunday are a flat £16 all day. A late Saturday show at 22:30 is £16 against £24 earlier the same evening.' },
 
- { id:'bounce', name:'Bounce', where:'Farringdon', sites:['Farringdon','Old Street'],
-   areas:['central','east','city'], act:'pingpong', url:'/activity/bounce/farringdon/',
-   offpeak:null, peak:null, min:1, max:null,
-   why:'Ping pong with a full Italian kitchen, in one of the best connected addresses in London.',
-   note:'We have not sampled the booking flow here yet, so we are not quoting a price.' },
-
  { id:"flight-club-victoria", name:"Flight Club", where:"Victoria", sites:["Victoria"], areas:["central"], act:"darts", url:"/activity/flight-club/victoria/", offpeak:10, peak:17, min:1, max:null, why:"The same darts and the same price list as Shoreditch, closer to the west end.", note:"Flight Club publishes one price list across all five London sites. We have not re-checked the Friday six-player minimum at this site." },
  { id:"oche-the-strand", name:"Oche", where:"The Strand", sites:["The Strand"], areas:["central"], act:"darts", url:"/activity/oche/the-strand/", offpeak:8, peak:12, min:1, max:null, why:"Darts with a proper kitchen attached. Cheapest headline darts price we have found.", note:"Published as £8 daytime and £12 evening. We have not confirmed where the changeover falls." },
  { id:"all-star-lanes-brick-lane", name:"All Star Lanes", where:"Brick Lane", sites:["Brick Lane"], areas:["east"], act:"bowling", url:"/activity/all-star-lanes/brick-lane/", offpeak:null, peak:null, min:1, max:null, why:"Boutique bowling with a diner menu. Per-game price is not published up front.", note:"No per-game price is published. A £7 per person minimum spend on food or drink applies to advance lane bookings." },
  { id:"roxy-ball-room-old-street", name:"Roxy Ball Room", where:"Old Street", sites:["Old Street"], areas:["east"], act:"bowling", url:"/activity/roxy-ball-room/old-street/", offpeak:null, peak:null, min:1, max:null, why:"Duck pin bowling, pool, tech darts and karaoke under one roof. Price at this specific site is not confirmed.", note:"A from-£14 rate is published for the St Mary Axe site only, not Old Street, so we are not carrying it across." },
  { id:"swingers-west-end", name:"Swingers", where:"West End", sites:["West End"], areas:["central"], act:"golf", url:"/activity/swingers/west-end/", offpeak:12, peak:12, min:1, max:null, why:"Nine-hole crazy golf with four cocktail bars and street food. The City site has closed.", note:"Published from £12 per person for adults. How high peak slots go is not published. The City site has closed." },
- { id:"plonk-borough-market", name:"Plonk", where:"Borough Market", sites:["Borough Market"], areas:["southbank"], act:"golf", url:"/activity/plonk/borough-market/", offpeak:null, peak:null, min:1, max:null, why:"Nine holes in the arches under London Bridge, with an arcade attached. Price at this site is not confirmed.", note:"Plonk prices its four sites differently and Borough Market does not publish a rate, so we are not guessing at one." },
  { id:"electric-shuffle-kings-cross", name:"Electric Shuffle", where:"King's Cross", sites:["King's Cross"], areas:["central", "north"], act:"shuffle", url:"/activity/electric-shuffle/kings-cross/", offpeak:null, peak:null, min:1, max:null, why:"The same shuffleboard format as London Bridge. Prices at this site are unconfirmed.", note:"No published rate for this site. Electric Shuffle notes prices can differ between sites, so we are not carrying the London Bridge figure across." },
  { id:"bounce-battersea", name:"Bounce", where:"Battersea", sites:["Battersea"], areas:["southbank"], act:"pingpong", url:"/activity/bounce/battersea/", offpeak:null, peak:null, min:1, max:null, why:"Bounce inside Battersea Power Station. Opened after the Old Street site closed.", note:"No published per-person price. This site opened after Bounce closed Old Street." },
- { id:"sixes-cricket-fitzrovia", name:"Sixes Cricket", where:"Fitzrovia", sites:["Fitzrovia"], areas:["central"], act:"cricket", url:"/activity/sixes-cricket/fitzrovia/", offpeak:null, peak:null, min:1, max:null, why:"A central Sixes site on Great Portland Street. Trading status needs confirming.", note:"No published rate for this site, and it was not on the Sixes locations page when we checked. Confirm it is trading before relying on it." },
  { id:"dabbers-aldgate", name:"Dabbers Social Bingo", where:"Aldgate", sites:["Aldgate"], areas:["city", "east"], act:"bingo", url:"/activity/dabbers/aldgate/", offpeak:18, peak:18, min:1, max:null, why:"Social bingo with themed nights. Cheaper entry than Hijingo, priced by show.", note:"Published from £18 per person per show, rising for themed nights." },
 
 ];
@@ -284,7 +275,7 @@ function render(){
              ' &middot; ' + (when==='peak'?'Friday or Saturday night':'weeknight, off peak') + '</span></div>';
 
   if (!rows.length && !dropped.length){
-    el.innerHTML = head + '<p class="fempty">Nothing in our set matches that combination yet. We cover nineteen venues, which is a start rather than a survey. Try widening the area or the activity.</p>';
+    el.innerHTML = head + '<p class="fempty">Nothing in our set matches that combination yet. We cover sixteen venues, which is a start rather than a survey. Try widening the area or the activity.</p>';
     return;
   }
 

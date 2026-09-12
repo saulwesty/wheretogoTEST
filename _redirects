@@ -16,3 +16,8 @@
 /venue-puttshack-bank.html                   /activity/puttshack/bank/                            308
 /venue-bounce-farringdon                     /activities/                                          308
 /venue-bounce-farringdon.html                /activities/                                          308
+
+# Permanently closed venues, redirected to the nearest live equivalent
+/activity/bounce/farringdon/                 /activity/bounce/battersea/                          301
+/activity/sixes-cricket/fitzrovia/           /activity/sixes-cricket/london-bridge/               301
+/activity/plonk/borough-market/              /activities/#golf                                    301
