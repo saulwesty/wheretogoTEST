@@ -238,6 +238,22 @@ td.c-peak{background:var(--peak)}
 .chip:hover{background:var(--ink);color:#fff}
 .chip[aria-pressed="true"]{background:var(--ink);color:#fff}
 
+/* ── page section nav (in-page anchor tabs) ─────── */
+nav[aria-label="Page sections"] .chips{gap:6px clamp(18px,2.5vw,28px)}
+nav[aria-label="Page sections"] .chip{
+  border:none;background:none;padding:4px 0;
+  font-variation-settings:'wdth' 106,'wght' 600;
+  color:var(--ink);border-bottom:2px solid transparent;
+}
+nav[aria-label="Page sections"] .chip:hover,
+nav[aria-label="Page sections"] .chip:focus-visible{
+  background:none;color:var(--ink);border-bottom-color:var(--ink);
+}
+nav[aria-label="Page sections"] .chip[aria-current="true"]{
+  font-variation-settings:'wdth' 106,'wght' 800;
+  border-bottom-color:var(--accent);
+}
+
 /* ── homepage hero ───────────────────────────── */
 .bighero{padding:clamp(30px,6vw,72px) 0 clamp(28px,4vw,48px)}
 .bighero h1{max-width:16ch}
