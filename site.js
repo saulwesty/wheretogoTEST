@@ -23,3 +23,16 @@
 
   items.forEach(function(item){ observer.observe(item.sec); });
 })();
+
+/* Ratings panel: animate the stars filling in when it scrolls into view.
+   Stars are full by default, so nothing breaks if this never runs. */
+(function(){
+  var panels = [].slice.call(document.querySelectorAll('.rate'));
+  if(!panels.length || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('go'); io.unobserve(e.target); }
+    });
+  }, {threshold:.2});
+  panels.forEach(function(p){ io.observe(p); });
+})();
