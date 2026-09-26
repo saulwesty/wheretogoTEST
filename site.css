@@ -402,3 +402,9 @@ footer .soon{opacity:.45}
   letter-spacing:.02em;text-transform:none;color:var(--mid)}
 .navdrop-venues a.nd-all{background:var(--ink);color:#fff;font-size:12px;letter-spacing:.06em}
 .navdrop-venues a.nd-all:hover{background:var(--accent,var(--ink))}
+.rate-wrap{padding-top:clamp(28px,4.5vw,54px)}
+.rate-wrap .rate{margin-bottom:0}
+/* footer: venue list spans the full width in columns */
+.fgrid>div:nth-child(2){grid-column:1/-1;order:9}
+.fgrid>div:nth-child(2) ul{columns:4 190px;column-gap:clamp(22px,3vw,40px)}
+.fgrid>div:nth-child(2) li{break-inside:avoid}
