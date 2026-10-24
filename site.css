@@ -321,6 +321,7 @@ footer .soon{opacity:.45}
   .navdrop a{border-left:0}
   .nav a:hover{background:var(--grey)}
   .nav a[aria-current="page"]{background:var(--ink);color:#fff}
+  .nav{flex-wrap:wrap;border:1px solid var(--ink);padding:1px}.nav>a,.navdrop{box-shadow:0 0 0 1px var(--ink)}.nav a{border-left:0}
   .navdrop{padding-bottom:0;margin-bottom:0}
   .navdrop-panel{display:none!important}
   .stat{border-right:none;border-bottom:2px solid var(--ink)}
