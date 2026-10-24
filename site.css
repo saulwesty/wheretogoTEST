@@ -314,7 +314,11 @@ footer .soon{opacity:.45}
 @media (max-width:860px){
   .rw{grid-template-columns:1fr}
   .rw-col + .rw-col{border-left:none;border-top:3px solid var(--ink)}
-  .nav a:not(.btn){display:none}
+  .topbar .wrap{height:auto;flex-wrap:wrap;padding-top:12px;padding-bottom:12px;row-gap:10px}
+  .nav{width:100%;margin-left:0;justify-content:space-between;gap:12px}
+  .nav a{font-size:13px}
+  .navdrop{padding-bottom:0;margin-bottom:0}
+  .navdrop-panel{display:none!important}
   .stat{border-right:none;border-bottom:2px solid var(--ink)}
   .stat:last-child{border-bottom:none}
 }
