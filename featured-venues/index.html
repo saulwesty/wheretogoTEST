@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Featured Venues | Where To Go London</title>
-<meta name="description" content="The venues Where To Go London is recommending right now, with prices, group sizes and booking details. We may earn commission from some of them.">
+<meta name="description" content="The venues Where To Go London is recommending right now, with prices, group sizes and booking details.">
 <meta name="theme-color" content="#ff5a00">
 <link rel="canonical" href="https://wheretogolondon.co.uk/featured-venues/">
 <meta property="og:title" content="Featured Venues | Where To Go London">
@@ -17,9 +17,117 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../site.css">
 <style>
-  /* Page-local additions. Move into site.css if more featured venues are added. */
-  .tag{display:inline-block;font-family:var(--data);font-size:11px;letter-spacing:.09em;text-transform:uppercase;background:var(--yellow);color:var(--ink);border:2px solid var(--ink);padding:4px 9px;margin:0 0 14px}
-  .feat-links{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0 0}
+  /* Featured venues page. Classes are prefixed fv- . Move into site.css if more featured venues are added. */
+  .fv{color:var(--ink);font-family:var(--body)}
+  .fv *{box-sizing:border-box}
+  .fv h1,.fv h2,.fv h3,.fv h4,.fv p,.fv ul{margin:0;padding:0}
+  .fv ul{list-style:none}
+  .fv-in{max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+  .fv-d{font-family:var(--display);font-variation-settings:'wdth' 125,'wght' 900;text-transform:uppercase;letter-spacing:-.01em;line-height:.95}
+  .fv-m{font-family:var(--data);font-size:12px;letter-spacing:.06em;text-transform:uppercase;line-height:1.4}
+  .fv-mid{color:var(--mid)}
+
+  /* page band */
+  .fv-band{background:var(--grey);border-bottom:3px solid var(--ink);padding:clamp(22px,3.5vw,40px) 0}
+  .fv-band .fv-m{margin-bottom:14px}
+  .fv-band a{color:inherit;text-decoration:none}
+  .fv-band a:hover{text-decoration:underline}
+  .fv .fv-band h1{font-family:var(--display);font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(34px,5vw,56px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase;max-width:none;margin:0 0 16px}
+  .fv-intro{max-width:68ch;font-size:clamp(16px,1.6vw,18px);line-height:1.5}
+
+  /* venue head */
+  .fv-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 48px;padding:clamp(24px,4vw,40px) 0 clamp(20px,3vw,28px)}
+  .fv-head h2{font-size:clamp(48px,9vw,92px)}
+  .fv-head p{flex:1 1 300px;max-width:380px;font-size:16px;line-height:1.5}
+
+  /* hero image slot with panel */
+  .fv-hero{position:relative}
+  .fv-slot{position:relative;background:var(--grey);border:3px solid var(--ink);height:clamp(240px,44vw,560px);overflow:hidden}
+  .fv-slot svg{position:absolute;inset:0;width:100%;height:100%}
+  .fv-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .fv-tag{position:absolute;right:16px;bottom:16px;background:var(--paper);border:3px solid var(--ink);padding:8px 12px;color:var(--ink)}
+  .fv-panel{background:var(--paper);border:3px solid var(--ink);border-top:0;padding:20px}
+  .fv-panel h3{display:flex;align-items:center;gap:10px;font-family:var(--data);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+  .fv-panel h3::before{content:"";width:14px;height:14px;background:var(--racing);border:3px solid var(--ink);flex:none}
+  .fv-panel ul{margin-top:12px;font-size:17px;line-height:1.35;font-weight:600}
+  .fv-panel li{padding:10px 0;border-top:3px solid var(--ink)}
+  .fv-panel li:last-child{border-bottom:3px solid var(--ink)}
+  @media(min-width:900px){
+    .fv-slot{min-height:480px}
+    .fv-panel{position:absolute;top:32px;left:32px;width:min(440px,calc(100% - 64px));border-top:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:24px}
+  }
+
+  /* buttons */
+  .fv-btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:0 24px;background:var(--racing);color:var(--ink);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);font-family:var(--display);font-variation-settings:'wdth' 125,'wght' 800;text-transform:uppercase;font-size:15px;line-height:1.1;text-decoration:none;text-align:center}
+  .fv-btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--ink)}
+  .fv-btn:focus-visible{outline:3px solid var(--darts);outline-offset:3px}
+  .fv-panel .fv-btn{width:100%;margin-top:20px}
+
+  /* key facts */
+  .fv-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3px;background:var(--ink);border:3px solid var(--ink);margin-top:clamp(32px,5vw,48px)}
+  .fv-stat{background:var(--paper);padding:20px 24px}
+  .fv-stat b{display:block;font-family:var(--display);font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(26px,3vw,34px);line-height:1;text-transform:uppercase;letter-spacing:-.01em;margin-top:8px;font-weight:900}
+  .fv-stat p:last-child{margin-top:6px;font-size:15px;line-height:1.4}
+
+  /* sections */
+  .fv-sec{margin-top:clamp(44px,7vw,72px)}
+  .fv-sec > h3{font-family:var(--display);font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(28px,4vw,44px);line-height:.98;text-transform:uppercase;letter-spacing:-.01em}
+  .fv-lede{margin-top:14px;max-width:68ch;font-size:17px;line-height:1.5}
+
+  /* activity cards */
+  .fv-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;margin-top:28px}
+  .fv-card{display:flex;flex-direction:column;background:var(--paper);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink)}
+  .fv-card .fv-slot{height:220px;border-width:0 0 3px 0}
+  .fv-card .fv-tag{right:auto;left:16px;font-size:11px}
+  .fv-cbody{padding:24px;display:flex;flex-direction:column;flex:1}
+  .fv-cbody h4{font-family:var(--display);font-variation-settings:'wdth' 125,'wght' 900;font-size:30px;line-height:.98;text-transform:uppercase;margin-top:8px;letter-spacing:-.01em}
+  .fv-cbody > p:not(.fv-m){margin-top:12px;font-size:16px;line-height:1.5}
+  .fv-facts{margin-top:auto;padding-top:18px;font-size:15px}
+  .fv-facts li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:2px solid var(--rule)}
+  .fv-facts span:first-child{font-family:var(--data);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mid)}
+  .fv-facts span:last-child{text-align:right;font-weight:600}
+  .fv-price{display:inline-block;padding:3px 8px;border:2px solid var(--ink)}
+  .fv-price--cheap{background:var(--cheap)}
+  .fv-price--mid{background:var(--middling)}
+
+  /* price table */
+  .fv-scroll{overflow-x:auto;margin-top:28px;-webkit-overflow-scrolling:touch}
+  .fv-table{width:100%;min-width:640px;border-collapse:collapse;border:3px solid var(--ink);background:var(--paper)}
+  .fv-table caption{position:absolute;left:-9999px}
+  .fv-table th,.fv-table td{text-align:left;vertical-align:top;padding:16px 20px}
+  .fv-table thead th{background:var(--ink);color:#fff;font-family:var(--data);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+  .fv-table tbody th,.fv-table tbody td{border-top:3px solid var(--ink)}
+  .fv-table tbody th{font-family:var(--display);font-variation-settings:'wdth' 125,'wght' 800;font-size:16px;text-transform:uppercase}
+  .fv-table td.fv-c-cheap{background:var(--cheap);font-weight:700}
+  .fv-table td.fv-c-mid{background:var(--middling);font-weight:700}
+  .fv-caption{margin-top:14px;max-width:72ch;font-size:14px;line-height:1.5;color:var(--mid)}
+
+  /* christmas + trust row */
+  .fv-duo{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px;align-items:stretch}
+  .fv-xmas{background:var(--racing);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:clamp(22px,3vw,32px)}
+  .fv-xmas h3{font-family:var(--display);font-variation-settings:'wdth' 125,'wght' 900;font-size:22px;line-height:1;text-transform:uppercase}
+  .fv-xmas .fv-big{font-family:var(--display);font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(48px,6vw,64px);line-height:.95;text-transform:uppercase;margin-top:14px}
+  .fv-xmas p{margin-top:12px;font-size:17px;line-height:1.45;font-weight:500}
+  .fv-code{display:inline-block;margin-top:14px;padding:10px 16px;background:var(--paper);border:3px solid var(--ink);font-family:var(--data);font-size:clamp(20px,2.4vw,26px);font-weight:500;letter-spacing:.08em}
+  .fv-xmas .fv-by{font-weight:700}
+  .fv-trust{background:var(--grey);border:3px solid var(--ink);padding:clamp(22px,3vw,32px)}
+  .fv-trust h3{font-family:var(--display);font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(22px,2.6vw,28px);line-height:1;text-transform:uppercase}
+  .fv-trust h4{font-family:var(--display);font-variation-settings:'wdth' 125,'wght' 800;font-size:16px;line-height:1.1;text-transform:uppercase;margin-top:26px}
+  .fv-trust ul{margin-top:12px;font-size:16px;line-height:1.45}
+  .fv-trust li{padding:9px 0 9px 26px;border-top:2px solid var(--rule);position:relative}
+  .fv-trust li::before{content:"";position:absolute;left:0;top:18px;width:14px;height:3px;background:var(--ink)}
+
+  /* book band */
+  .fv-book{margin-top:clamp(44px,7vw,72px);background:var(--ink);color:#fff;padding:clamp(32px,5vw,56px) 0}
+  .fv-book .fv-in{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px 48px}
+  .fv-book h3{font-family:var(--display);font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(30px,4.4vw,44px);line-height:1;text-transform:uppercase}
+  .fv-book p{margin-top:12px;max-width:56ch;font-size:17px;line-height:1.5}
+  .fv-book .fv-btn{min-height:64px;padding:0 36px;font-size:18px;border-color:#fff;box-shadow:5px 5px 0 #fff}
+  .fv-book .fv-btn:hover{box-shadow:3px 3px 0 #fff}
+
+  @media(max-width:900px){
+    .fv-duo{grid-template-columns:1fr}
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -46,99 +154,168 @@
 <a href="../contact/">Contact</a>
 </nav></div></header>
 
-<main id="main">
-<div class="wrap">
+<main id="main" class="fv">
 
-  <section class="masthead">
-    <div class="crumbs"><a href="/">Where To Go London</a> / Featured venues</div>
-    <h1 class="long">Featured venues</h1>
-
-    <div class="summary">
-      <ul>
-        <li><b>These are the venues we love right now.</b> We may make money from some of them, and any venue we are paid for or earn commission from is labelled on its entry.</li>
-        <li>Each entry sets out what you do, who it suits, how much it costs and how to book.</li>
-        <li>Prices are the venue's own figures, and we say clearly where we have not yet checked them ourselves.</li>
-      </ul>
+  <div class="fv-band">
+    <div class="fv-in">
+      <p class="fv-m fv-mid"><a href="/">Where To Go London</a> / Featured venues</p>
+      <h1>Featured venues</h1>
+      <p class="fv-intro">These are the venues we love right now. Each entry sets out what you do, who it suits, how much it costs and how to book. Prices are the venue’s own figures, so check the booking page before you book.</p>
     </div>
-  </section>
+  </div>
 
-  <!-- ============ FEATURED VENUE 1: WILD GOOSE ============ -->
-  <article class="sec" id="wild-goose">
-    <span class="tag">Commission partner: we may earn commission if you book through this page</span>
-    <h2>Wild Goose</h2>
+  <!-- ============ VENUE UNIT: repeat this whole article for each featured venue ============ -->
+  <article id="wild-goose" aria-labelledby="venue-wg">
+    <div class="fv-in">
 
-    <div class="hero" role="img" aria-label="Photo of a Wild Goose team treasure hunt in London to be added">
-      <span>Photo to come</span>
-    </div>
+      <div class="fv-head">
+        <h2 id="venue-wg" class="fv-d">Wild Goose</h2>
+        <p>Wild Goose runs team activities in London that start and end wherever your group chooses, including treasure hunts around the city streets and indoor challenges in your own office.</p>
+      </div>
 
-    <p>Wild Goose runs team activities in London that start and end wherever your group chooses, including treasure hunts around the city streets and indoor challenges in your own office. Prices start at £12 per person plus VAT, and groups can range from 8 to 750 people.</p>
-
-    <div class="feat-links">
-      <a class="btn btn--big" href="https://wearewildgoose.com/uk/team-building-activities/locations/london/" rel="sponsored noopener" target="_blank">See Wild Goose London activities</a>
-    </div>
-
-    <h3>Why we think they are a great venue:</h3>
-    <ul>
-      <li>Every activity can start and end wherever your group chooses, so you are not tied to one location.</li>
-      <li>Groups of 8 to 750 people can take part, which covers both a small team and a whole company.</li>
-      <li>There are indoor and outdoor options, so the weather does not have to decide your plans.</li>
-      <li>For Christmas, you can reserve your date with a minimum number of people and add more later at the same discount.</li>
-      <li>You can book online, often with as little as 48 hours' notice, according to Wild Goose.</li>
-    </ul>
-
-    <h3>Who is Wild Goose?</h3>
-    <p>Wild Goose is a team-building company that says it has been running experiences for teams since 2004. It also says it is rated 5.0 on Trustpilot from 665 reviews. Both figures come from Wild Goose, and we have not yet checked them ourselves.</p>
-    <p>Wild Goose is not a single venue with an address, because each activity takes place wherever your group is meeting. That makes it a different kind of listing from most of the venues on Where To Go London.</p>
-
-    <h3>What can you book in London?</h3>
-    <p><strong>The Ultimate</strong> is an outdoor GPS treasure hunt that Wild Goose describes as its all-time favourite. Teams explore the streets around wherever they are meeting, with trivia, photo challenges and competitive tasks, and it takes 90 to 120 minutes. It runs all year round.</p>
-    <p><strong>Festive Explorer</strong> is an outdoor Christmas version of the treasure hunt, with or without pub stops along the way. Teams can finish wherever the party is happening, and it takes 2 hours. Groups can run it themselves or add a remote host or an onsite host.</p>
-    <p><strong>Level Up</strong> is an indoor option made up of fast-paced team challenges, and it takes 60 to 90 minutes. It runs in your own office or at a venue you have already booked, and no equipment needs setting up.</p>
-
-    <h2>How much does it cost?</h2>
-    <div class="scroller">
-      <table class="data">
-        <thead>
-          <tr><th scope="col">Activity</th><th scope="col">Where</th><th scope="col">Time</th><th scope="col">Group size</th><th scope="col">Price per person</th></tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row">The Ultimate</th><td>Outdoors</td><td>90 to 120 minutes</td><td>8 to 750</td><td class="c-mid"><b>From £15 + VAT</b></td></tr>
-          <tr><th scope="row">Festive Explorer</th><td>Outdoors</td><td>2 hours</td><td>8 to 750</td><td class="c-mid"><b>From £15 + VAT</b></td></tr>
-          <tr><th scope="row">Level Up</th><td>Indoors</td><td>60 to 90 minutes</td><td>8 to 750</td><td class="c-cheap"><b>From £12 + VAT</b></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="caption">Prices are the "from" prices Wild Goose gave us on 24 October 2026 and they do not include VAT. We have not yet confirmed the top end of each range or checked these figures against the Wild Goose website, so please check the booking page before you book. We do not yet know the price of the remote or onsite host options.</p>
-
-    <h2>Is there a Christmas discount?</h2>
-    <p>Wild Goose is offering 10% off any Christmas activity with the code <strong class="num">WHATTODO10</strong> for bookings made by 23:59 on 31 October 2026. You can book for a minimum number of people to secure your December date and time, then increase the numbers nearer the time, and the extra places get the same 10% discount.</p>
-
-    <h2>How do you book?</h2>
-    <p>You can book online, and Wild Goose says this is often possible with as little as 48 hours' notice. Every activity can start and end wherever your group chooses.</p>
-    <div class="feat-links">
-      <a class="btn" href="https://wearewildgoose.com/uk/team-building-activities/locations/london/" rel="sponsored noopener" target="_blank">Book with Wild Goose</a>
-    </div>
-
-    <section class="verdict-sec" aria-labelledby="wg-verdict">
-      <div class="verdict-head"><h2 id="wg-verdict">Is Wild Goose right for your group?</h2></div>
-      <div class="verdict-body">
-        <p>Wild Goose suits teams who want to organise an activity around a date, a place and a headcount they already have, rather than fit around a fixed venue.</p>
-        <div class="rw" style="grid-template-columns:1fr">
-          <div class="rw-col rw--yes">
-            <h3>Right for</h3>
-            <ul>
-              <li>Office managers organising a team social or Christmas party.</li>
-              <li>Larger groups, with group sizes from 8 up to 750.</li>
-              <li>Teams who want to finish at their own party venue or a pub of their choice.</li>
-            </ul>
-          </div>
+      <div class="fv-hero">
+        <!-- PHOTO SWAP (hero): replace this whole fv-slot div with:
+        <div class="fv-slot"><img src="../img/wild-goose-hero.jpg" width="1184" height="560" alt="[one-line description from Wild Goose]" fetchpriority="high"></div>
+        and add <p class="fv-caption">Photo: Wild Goose</p> after the fv-hero div if they want a credit. -->
+        <div class="fv-slot" role="img" aria-label="Photo of a Wild Goose team activity in London to be added">
+          <svg aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="0" y1="0" x2="100" y2="100" stroke="#c4c4bf" stroke-width="2" vector-effect="non-scaling-stroke"/><line x1="100" y1="0" x2="0" y2="100" stroke="#c4c4bf" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+          <div class="fv-tag fv-m">Photo to come</div>
         </div>
+        <div class="fv-panel">
+          <h3>Right for</h3>
+          <ul>
+            <li>Office managers organising a team social or Christmas party.</li>
+            <li>Larger groups, with group sizes from 8 up to 750.</li>
+            <li>Teams who want to finish at their own party venue or a pub of their choice.</li>
+          </ul>
+          <a class="fv-btn" href="https://wearewildgoose.com/uk/team-building-activities/locations/london/" rel="noopener" target="_blank">See Wild Goose London activities
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#111014" stroke-width="3"><path d="M3 10h13M11 4l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+
+      <section class="fv-stats" aria-label="Key facts about Wild Goose">
+        <div class="fv-stat"><p class="fv-m fv-mid">Group size</p><b>8 to 750</b><p>people</p></div>
+        <div class="fv-stat"><p class="fv-m fv-mid">Time</p><b>60 to 120</b><p>minutes, depending on the activity</p></div>
+        <div class="fv-stat"><p class="fv-m fv-mid">Price</p><b>From £12</b><p>per person, plus VAT</p></div>
+        <div class="fv-stat"><p class="fv-m fv-mid">Booking notice</p><b>48 hours</b><p>Booking is often possible with as little as this much notice</p></div>
+      </section>
+
+      <section class="fv-sec" aria-labelledby="wg-activities">
+        <h3 id="wg-activities">What can you book in London?</h3>
+        <p class="fv-lede">Wild Goose is not a single venue with an address, so each activity takes place wherever your group is meeting. There are three to choose from.</p>
+        <div class="fv-cards">
+
+          <div class="fv-card">
+            <!-- PHOTO SWAP (card): replace the fv-slot div with <div class="fv-slot"><img src="../img/wild-goose-ultimate.jpg" width="640" height="440" alt="[description]" loading="lazy"></div> -->
+            <div class="fv-slot" role="img" aria-label="Photo of The Ultimate treasure hunt to be added">
+              <svg aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="0" y1="0" x2="100" y2="100" stroke="#c4c4bf" stroke-width="2" vector-effect="non-scaling-stroke"/><line x1="100" y1="0" x2="0" y2="100" stroke="#c4c4bf" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+              <div class="fv-tag fv-m">Photo to come</div>
+            </div>
+            <div class="fv-cbody">
+              <p class="fv-m fv-mid">Outdoor GPS treasure hunt</p>
+              <h4>The Ultimate</h4>
+              <p>This is Wild Goose’s all-time favourite, and it works all year round. Teams explore the streets around wherever they are meeting, with trivia, photo challenges and competitive tasks.</p>
+              <ul class="fv-facts">
+                <li><span>Time</span><span>90 to 120 minutes</span></li>
+                <li><span>Group size</span><span>8 to 750 people</span></li>
+                <li><span>Price</span><span><span class="fv-price fv-price--mid">From £15 + VAT</span> per person</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="fv-card">
+            <div class="fv-slot" role="img" aria-label="Photo of Festive Explorer to be added">
+              <svg aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="0" y1="0" x2="100" y2="100" stroke="#c4c4bf" stroke-width="2" vector-effect="non-scaling-stroke"/><line x1="100" y1="0" x2="0" y2="100" stroke="#c4c4bf" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+              <div class="fv-tag fv-m">Photo to come</div>
+            </div>
+            <div class="fv-cbody">
+              <p class="fv-m fv-mid">Outdoor Christmas treasure hunt</p>
+              <h4>Festive Explorer</h4>
+              <p>A GPS Christmas treasure hunt around London, with or without pub stops along the way. Teams can finish wherever the party is happening, and groups can run it themselves or add a remote host or an onsite host.</p>
+              <ul class="fv-facts">
+                <li><span>Time</span><span>2 hours</span></li>
+                <li><span>Group size</span><span>8 to 750 people</span></li>
+                <li><span>Price</span><span><span class="fv-price fv-price--mid">From £15 + VAT</span> per person</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="fv-card">
+            <div class="fv-slot" role="img" aria-label="Photo of Level Up to be added">
+              <svg aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="0" y1="0" x2="100" y2="100" stroke="#c4c4bf" stroke-width="2" vector-effect="non-scaling-stroke"/><line x1="100" y1="0" x2="0" y2="100" stroke="#c4c4bf" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+              <div class="fv-tag fv-m">Photo to come</div>
+            </div>
+            <div class="fv-cbody">
+              <p class="fv-m fv-mid">Indoor team challenges</p>
+              <h4>Level Up</h4>
+              <p>These are fast-paced team challenges for groups who would rather stay inside. Level Up runs in your own office or at a venue you have already booked, and there is no equipment to set up.</p>
+              <ul class="fv-facts">
+                <li><span>Time</span><span>60 to 90 minutes</span></li>
+                <li><span>Group size</span><span>8 to 750 people</span></li>
+                <li><span>Price</span><span><span class="fv-price fv-price--cheap">From £12 + VAT</span> per person</span></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="fv-sec" aria-labelledby="wg-cost">
+        <h3 id="wg-cost">How much does it cost?</h3>
+        <div class="fv-scroll">
+          <table class="fv-table">
+            <caption>Wild Goose activities and prices per person</caption>
+            <thead><tr><th scope="col">Activity</th><th scope="col">Where</th><th scope="col">Time</th><th scope="col">Group size</th><th scope="col">Price per person</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">The Ultimate</th><td>Outdoors</td><td>90 to 120 minutes</td><td>8 to 750</td><td class="fv-c-mid">From £15 + VAT</td></tr>
+              <tr><th scope="row">Festive Explorer</th><td>Outdoors</td><td>2 hours</td><td>8 to 750</td><td class="fv-c-mid">From £15 + VAT</td></tr>
+              <tr><th scope="row">Level Up</th><td>Indoors</td><td>60 to 90 minutes</td><td>8 to 750</td><td class="fv-c-cheap">From £12 + VAT</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="fv-caption">These are the “from” prices Wild Goose gave us on 24 October 2026, and they do not include VAT. The top end of each range and the price of the host options are not yet confirmed, so please check the booking page before you book.</p>
+      </section>
+
+      <section class="fv-sec fv-duo" aria-label="Christmas discount and why we recommend Wild Goose">
+        <div class="fv-xmas">
+          <h3>Is there a Christmas discount?</h3>
+          <p class="fv-big">10% off</p>
+          <p>Any Christmas activity, with the code</p>
+          <span class="fv-code">WHATTODO10</span>
+          <p class="fv-by">For bookings made by 23:59 on 31 October 2026.</p>
+          <p>You can book for a minimum number of people to secure your December date and time, then increase the numbers nearer the time. The extra places get the same 10% discount.</p>
+        </div>
+        <div class="fv-trust">
+          <h3>Why do we recommend Wild Goose?</h3>
+          <ul>
+            <li>Every activity can start and end wherever your group chooses, so you are not tied to one location.</li>
+            <li>Groups of 8 to 750 people can take part, which covers both a small team and a whole company.</li>
+            <li>There are indoor and outdoor options, so the weather does not have to decide your plans.</li>
+          </ul>
+          <h4>What does Wild Goose say about its track record?</h4>
+          <ul>
+            <li>It says it has been running experiences for teams since 2004.</li>
+            <li>It says it is rated 5.0 on Trustpilot from 665 reviews.</li>
+            <li>It says it has delivered team experiences for teams at Google, Amazon and monday.com.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <section class="fv-book" aria-labelledby="wg-book">
+      <div class="fv-in">
+        <div>
+          <h3 id="wg-book">How do you book?</h3>
+          <p>You can book online, often with as little as 48 hours’ notice. Every activity can start and end wherever your group chooses.</p>
+        </div>
+        <a class="fv-btn" href="https://wearewildgoose.com/uk/team-building-activities/locations/london/" rel="noopener" target="_blank">Book with Wild Goose
+          <svg aria-hidden="true" width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="#111014" stroke-width="3"><path d="M3 10h13M11 4l6 6-6 6"/></svg></a>
       </div>
     </section>
   </article>
-  <!-- ============ END FEATURED VENUE 1 ============ -->
+  <!-- ============ END VENUE UNIT ============ -->
 
-</div>
 </main>
 
 <footer><div class="wrap">
