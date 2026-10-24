@@ -36,3 +36,26 @@
   }, {threshold:.2});
   panels.forEach(function(p){ io.observe(p); });
 })();
+
+/* Venue CTA click tracking for GA4. One delegated listener, so any page that
+   loads site.js only needs these attributes on an outbound link:
+   data-track="venue_cta" data-venue="..." data-cta-label="..." data-cta-position="..."
+   Uses the beacon transport so the hit survives same-tab navigation; new-tab
+   clicks (target="_blank", ctrl/cmd-click, middle-click) never unload the page. */
+(function(){
+  function track(e){
+    if(e.type === 'auxclick' && e.button !== 1) return;
+    var el = e.target.closest && e.target.closest('[data-track="venue_cta"]');
+    if(!el || typeof window.gtag !== 'function') return;
+    window.gtag('event', 'venue_cta_click', {
+      venue_name: el.getAttribute('data-venue') || '',
+      cta_label: el.getAttribute('data-cta-label') || el.textContent.trim(),
+      cta_position: el.getAttribute('data-cta-position') || '',
+      link_url: el.href || '',
+      page_path: location.pathname,
+      transport_type: 'beacon'
+    });
+  }
+  document.addEventListener('click', track);
+  document.addEventListener('auxclick', track);
+})();
