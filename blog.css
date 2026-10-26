@@ -60,7 +60,8 @@
 .bloghead h1{flex:1 1 560px;margin:0;max-width:none}
 .bloghead p{flex:1 1 320px;max-width:44ch;margin:0;font-size:clamp(18px,2vw,22px);line-height:1.4}
 .chiprow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 clamp(28px,4vw,44px)}
-.chiprow .lbl{font-family:var(--data);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-right:8px}
+button.chip{color:var(--ink);line-height:inherit;margin:0}
+.feat[hidden],.soon-card[hidden],.soonsec[hidden]{display:none}
 .feat{display:flex;flex-wrap:wrap;border:3px solid var(--ink);text-decoration:none;color:var(--ink);box-shadow:8px 8px 0 var(--ink);margin:0 8px clamp(40px,6vw,72px) 0}
 .feat .ph{flex:1 1 440px;min-height:340px;border:0}
 .feat-body{flex:1 1 400px;padding:clamp(24px,3.4vw,44px);display:flex;flex-direction:column;gap:16px;justify-content:center;box-sizing:border-box}

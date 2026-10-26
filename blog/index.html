@@ -55,9 +55,10 @@ gtag('js',new Date());gtag('config',id,{anonymize_ip:true});})();
 <div class="crumbs"><a href="../">Home</a> / Blog</div>
 <div class="bloghead"><h1>The blog</h1><p>Guides to the darts bars, bowling alleys, golf courses and escape rooms of London, written by Saul and checked against each venue’s own website.</p></div>
 </div>
-<div class="chiprow"><span class="lbl">Browse by activity</span><ul class="chips" style="margin:0"><li><a class="chip" href="../activities/#darts">Darts</a></li><li><a class="chip" href="../activities/#bowling">Bowling</a></li><li><a class="chip" href="../activities/#golf">Golf &amp; crazy golf</a></li><li><a class="chip" href="../activities/#shuffleboard">Shuffleboard &amp; boules</a></li><li><a class="chip" href="../activities/#clays">Clay shooting</a></li><li><a class="chip" href="../activities/#bingo">Bingo &amp; karaoke</a></li><li><a class="chip" href="../activities/#allrounders">All-rounders</a></li></ul></div>
-<a class="feat" href="what-types-of-activities-can-i-do-in-london/"><div class="ph" style="--c:#0060df"><span class="ph-label" aria-hidden="true">Guide</span></div><div class="feat-body"><span class="tag">Latest guide</span><h2>What types of activities can I do in London?</h2><p>Darts, bowling, crazy golf, clay shooting, bingo, escape rooms and more. Here is how each type of activity works and where in London you can play it.</p><div class="feat-meta"><span>By Saul</span><span>24 October 2026</span><span>10 activity types</span></div><span class="btn">Read the guide</span></div></a>
-<section class="soonsec"><h2>More guides on the way</h2><ul class="soon-grid"><li class="soon-card"><div class="bar" style="--c:#6e2fe0"></div><div><small>Coming soon</small><b>Best activities for an office social</b></div></li><li class="soon-card"><div class="bar" style="--c:#e8112d"></div><div><small>Coming soon</small><b>Best activities for a date</b></div></li><li class="soon-card"><div class="bar" style="--c:#00a550"></div><div><small>Coming soon</small><b>Best activities for a group of friends</b></div></li></ul></section>
+<!-- Post type filter. To add a new post type, add <button type="button" class="chip" data-filter="newtype" aria-pressed="false">New type</button> below, and set data-type="newtype" on each post card of that type. -->
+<div class="chiprow" role="group" aria-label="Filter posts by type"><button type="button" class="chip" data-filter="all" aria-pressed="true">All</button><button type="button" class="chip" data-filter="guide" aria-pressed="false">Guide</button></div>
+<a class="feat" data-type="guide" href="what-types-of-activities-can-i-do-in-london/"><div class="ph" style="--c:#0060df"></div><div class="feat-body"><span class="tag">Latest guide</span><h2>Types of competitive socialising in London</h2><p>Darts, bowling, shuffleboard, clay shooting, bingo and more. See every type of activity bar and competitive socialising venue in London, and how to choose.</p><div class="feat-meta"><span>By Saul</span><span>24 October 2026</span><span>10 activity types</span></div><span class="btn">Read the guide</span></div></a>
+<section class="soonsec"><h2>More guides on the way</h2><ul class="soon-grid"><li class="soon-card" data-type="guide"><div class="bar" style="--c:#6e2fe0"></div><div><small>Coming soon</small><b>Best activities for an office social</b></div></li><li class="soon-card" data-type="guide"><div class="bar" style="--c:#e8112d"></div><div><small>Coming soon</small><b>Best activities for a date</b></div></li><li class="soon-card" data-type="guide"><div class="bar" style="--c:#00a550"></div><div><small>Coming soon</small><b>Best activities for a group of friends</b></div></li></ul></section>
 </div></main>
 <footer><div class="wrap">
 <div class="fgrid">
@@ -84,5 +85,17 @@ gtag('js',new Date());gtag('config',id,{anonymize_ip:true});})();
 <p>&copy; 2026 Where To Go London</p>
 </div>
 </div></footer>
+<script>
+(function(){
+var buttons=[].slice.call(document.querySelectorAll('button[data-filter]'));
+var cards=[].slice.call(document.querySelectorAll('[data-type]'));
+buttons.forEach(function(btn){btn.addEventListener('click',function(){
+  var f=btn.getAttribute('data-filter');
+  buttons.forEach(function(b){b.setAttribute('aria-pressed',b===btn?'true':'false')});
+  cards.forEach(function(c){c.hidden=f!=='all'&&c.getAttribute('data-type')!==f});
+  [].forEach.call(document.querySelectorAll('.soonsec'),function(sec){sec.hidden=!sec.querySelector('[data-type]:not([hidden])')});
+})});
+})();
+</script>
 </body>
 </html>
