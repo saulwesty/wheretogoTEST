@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Commute Times to Bank From Every Part of London | Where To Go London</title>
+<meta name="description" content="How long it takes to get to Bank from every part of London, with a map of door-to-door times, the fastest and slowest commutes for the distance and every borough compared.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="../../favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../favicon-96.png" sizes="96x96" type="image/png">
+<link rel="icon" href="../../favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<meta name="theme-color" content="#ff5a00">
+<!-- Analytics. GA4 property for wheretogo-london.pages.dev -->
+<script>window.WTG_GA_ID='G-XTSQ5XJHTP';</script>
+<script>
+(function(){var id=window.WTG_GA_ID;
+if(!id||id.indexOf('G-')!==0||id==='G-XXXXXXXXXX')return;
+var s=document.createElement('script');s.async=1;
+s.src='https://www.googletagmanager.com/gtag/js?id='+id;document.head.appendChild(s);
+window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};
+gtag('js',new Date());gtag('config',id,{anonymize_ip:true});})();
+</script>
+
+<link rel="stylesheet" href="../../site.css">
+<link rel="stylesheet" href="../../blog.css">
+<style>:root{--accent:var(--ink)}</style>
+<style>
+:root{--s1:#f8cfae;--s2:#f4b085;--s3:#ee8d5b;--s4:#e56d33;--s5:#cd4c13;--s6:#a93813;--s7:#7e2b16;--s8:#561f14;--d1:#005b60;--d2:#00898f;--d3:#63b4b8;--d4:#d2cbc5;--d5:#d58d9d;--d6:#bc4a6b;--d7:#861f43;--dim-cell:#ecebe8;--map-line:rgba(17,16,20,.3);--halo:rgba(255,255,255,.92);--l-bak:#b36305;--l-cen:#e32017;--l-cir:#ffd300;--l-dis:#00782a;--l-ham:#f3a9bb;--l-jub:#a0a5a9;--l-met:#9b0056;--l-nor:#000000;--l-pic:#003688;--l-vic:#0098d4;--l-wac:#95cdba;--l-elz:#6950a1;--l-dlr:#00a4a7;--l-lo:#ee7c0e;--l-trm:#84b817;--l-nr:#5d6878}
+.post table.data td a,.post table.data th a,.post .faqsec dd a{color:var(--ink);font-weight:600;text-decoration:underline;text-decoration-thickness:2px;text-decoration-color:var(--racing);text-underline-offset:3px}
+.post .faqsec dl{margin:0;border-top:2px solid var(--ink)}
+.post .faqsec dt{font-family:var(--display);font-variation-settings:'wdth' 106,'wght' 700;font-size:clamp(17px,1.9vw,21px);letter-spacing:-.005em;padding:20px 0 6px}
+.post .faqsec dd{margin:0 0 20px;max-width:68ch;border-bottom:1px solid var(--rule);padding-bottom:20px}
+.decidesec > :last-child{margin-bottom:clamp(36px,5vw,64px)}
+.mapmod{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start;margin:8px 0 clamp(36px,5vw,64px)}
+.mapmain{min-width:0;display:grid;gap:12px}
+.mapctl{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
+.mapctl .chiprow,.reachrow{margin:0}
+.reachrow .lbl{font-size:13px;color:var(--mid);margin-right:2px}
+.reachrow .chip{padding:6px 10px;font-size:12px}
+.mapsearch{position:relative;flex:1 1 220px;max-width:320px}
+.mapsearch input{width:100%;font-family:var(--body);font-size:16px;padding:9px 12px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);border-radius:0;-webkit-appearance:none;appearance:none}
+.mapsearch ul{position:absolute;z-index:5;left:0;right:0;top:calc(100% + 2px);margin:0;padding:0;list-style:none;background:var(--paper);border:2px solid var(--ink);max-height:18rem;overflow:auto}
+.mapsearch li{padding:8px 12px;font-size:15px;cursor:pointer;display:flex;justify-content:space-between;gap:16px}
+.mapsearch li small{color:var(--mid)}
+.mapsearch li[aria-selected="true"],.mapsearch li:hover{background:var(--grey)}
+.mapbox{position:relative;width:100%;min-height:200px;border:3px solid var(--ink);background:var(--paper);overflow:hidden}
+.mapbox canvas{display:block;width:100%}
+#mapo{position:absolute;inset:0}
+.mapload{position:absolute;inset:0;display:grid;place-items:center;font-size:14px;color:var(--mid);padding:16px;text-align:center}
+.zoom{position:absolute;right:10px;bottom:10px;display:grid;gap:4px}
+.zoom button{width:36px;height:36px;padding:0;font-family:var(--display);font-size:18px;font-weight:700;color:var(--ink);background:var(--paper);border:2px solid var(--ink);cursor:pointer;display:grid;place-items:center}
+.zoom button:hover{background:var(--ink);color:#fff}
+.maphint{position:absolute;left:10px;bottom:10px;font-size:12px;color:var(--mid);background:var(--halo);padding:3px 7px;pointer-events:none}
+.legend{display:grid;gap:6px}
+.legend .ttl{font-family:var(--display);font-variation-settings:'wdth' 106,'wght' 700;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.legend .ends{display:flex;justify-content:space-between;font-size:12px;color:var(--mid)}
+.ramp{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:2px}
+.ramp div{display:grid;gap:4px}
+.ramp i{display:block;height:12px}
+.ramp span{font-size:11px;color:var(--mid);white-space:nowrap}
+.reach{font-size:15px;min-height:1.4em;margin:0}
+.reach b{font-weight:600}
+.board{background:var(--ink);color:#fff;border:3px solid var(--ink);padding:16px 16px 18px;display:grid;gap:14px;min-height:420px;align-content:start;font-size:14px;line-height:1.4}
+.board .top{display:flex;justify-content:space-between;gap:12px;font-family:var(--display);font-variation-settings:'wdth' 106,'wght' 700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);border-bottom:1px dashed rgba(255,255,255,.3);padding-bottom:9px}
+.board .place{font-family:var(--display);font-variation-settings:'wdth' 108,'wght' 800;font-size:22px;line-height:1.1;text-transform:uppercase;letter-spacing:-.01em}
+.board .bsub{font-size:13px;color:rgba(255,255,255,.6);margin-top:3px}
+.board .big{display:flex;align-items:baseline;gap:8px;color:var(--yellow);line-height:.9;font-family:var(--display)}
+.board .big b{font-variation-settings:'wdth' 125,'wght' 900;font-size:68px;letter-spacing:-.02em}
+.board .big span{font-variation-settings:'wdth' 110,'wght' 700;font-size:22px;text-transform:uppercase}
+.board .facts{display:grid;gap:5px;font-size:13.5px}
+.board .facts div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(255,255,255,.18);padding-bottom:5px}
+.board .facts span{color:rgba(255,255,255,.6)}
+.board ol{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:13.5px}
+.board li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:9px;align-items:center}
+.board li .m{color:var(--yellow);font-weight:600;white-space:nowrap}
+.board li .what small{display:block;color:rgba(255,255,255,.6);font-size:12px}
+.board li.minor .what{color:rgba(255,255,255,.75)}
+.board .dot{width:10px;height:10px;border-radius:50%;border:1px solid rgba(255,255,255,.6);justify-self:center;margin:0 3px}
+.board .hint{font-size:12px;color:rgba(255,255,255,.6);border-top:1px dashed rgba(255,255,255,.3);padding-top:9px}
+.lchip{font-family:var(--display);font-variation-settings:'wdth' 106,'wght' 700;font-size:11px;padding:3px 6px;color:#fff;white-space:nowrap;min-width:76px;text-align:center}
+.lchip.dark{color:var(--ink)}
+.lchip.nor{box-shadow:inset 0 0 0 1px #8b8b8b}
+table.data th.n,table.data td.n{text-align:right;white-space:nowrap}
+.rank{color:var(--mid)}
+.stn{font:inherit;font-weight:600;color:var(--ink);background:none;border:0;padding:0;cursor:pointer;text-align:left;text-decoration:underline;text-decoration-thickness:2px;text-decoration-color:var(--racing);text-underline-offset:3px}
+.stn:hover{background:var(--yellow)}
+.speed{display:grid;grid-template-columns:56px 80px;align-items:center;gap:8px;white-space:nowrap}
+.speed i{display:block;height:8px;background:var(--racing)}
+td.route{font-size:13.5px;min-width:200px}
+.delta{font-size:13px;color:var(--mid)}
+.sm-only{display:none}
+tr.pick{cursor:pointer}
+tr.pick:hover td{background:var(--grey)}
+table.data thead th button{font:inherit;color:inherit;letter-spacing:inherit;text-transform:inherit;background:none;border:0;padding:0;cursor:pointer;display:inline-flex;gap:4px;align-items:center}
+table.data thead th button::after{content:"↕";opacity:.6}
+table.data thead th button[data-dir="asc"]::after{content:"↑";opacity:1;color:var(--racing)}
+table.data thead th button[data-dir="desc"]::after{content:"↓";opacity:1;color:var(--racing)}
+.tbar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 20px;align-items:center;margin:0 0 12px}
+.tbar input{font-family:var(--body);font-size:16px;padding:9px 12px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);border-radius:0;-webkit-appearance:none;appearance:none;width:min(100%,280px)}
+.tbar span{font-size:13px;color:var(--mid)}
+.pairs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px 36px;margin:8px 0 clamp(36px,5vw,64px)}
+.pair{display:grid;gap:8px;padding-top:14px;border-top:3px solid var(--ink)}
+.post .pair h3{margin:0;font-family:var(--display);font-variation-settings:'wdth' 106,'wght' 800;font-size:17px;text-transform:uppercase;letter-spacing:-.005em;line-height:1.15}
+.pair .cap{margin:0;font-size:14px;color:var(--mid)}
+.brow{display:grid;grid-template-columns:150px minmax(0,1fr);gap:10px;align-items:center;font-size:14px}
+.brow .lab{line-height:1.2}
+.brow .lab small{display:block;color:var(--mid);font-size:12px}
+.bar{position:relative;height:22px}
+.bar i{position:absolute;left:0;top:0;bottom:0}
+.bar b{position:absolute;top:50%;transform:translateY(-50%);font-size:13px;font-weight:600;padding-left:6px;white-space:nowrap}
+.axis{display:grid;grid-template-columns:150px minmax(0,1fr);gap:10px}
+.axis > div{position:relative;height:16px;border-top:1px solid var(--rule)}
+.axis > div > span{position:absolute;top:2px;transform:translateX(-50%);font-size:11px;color:var(--mid)}
+.cyc{display:grid;gap:5px;max-width:68ch;margin:8px 0 12px}
+.cyc .brow{grid-template-columns:170px minmax(0,1fr)}
+.cyc .bar i{background:var(--darts)}
+.creditline{font-size:14px;background:var(--grey);border:2px solid var(--ink);padding:12px 14px;max-width:68ch;margin:0 0 14px;user-select:all}
+.copyrow{display:flex;flex-wrap:wrap;gap:8px}
+.copied{font-size:14px;min-height:1.4em;margin:10px 0 0}
+textarea.fallback{width:100%;max-width:68ch;height:8rem;font-size:12px;border:2px solid var(--ink);margin-top:8px}
+@media(max-width:860px){.mapmod{grid-template-columns:minmax(0,1fr)}.board{min-height:0}}
+@media(max-width:640px){table.data.rankt{min-width:0}.rankt .hide-sm{display:none}table.data.rankt th,table.data.rankt td{padding:11px 6px}table.data.rankt thead th{letter-spacing:.04em}.sm-only{display:block;font-size:12.5px;color:var(--mid)}.speed{grid-template-columns:auto}.speed i{display:none}}
+@media(max-width:520px){.brow,.axis{grid-template-columns:118px minmax(0,1fr)}.cyc .brow{grid-template-columns:128px minmax(0,1fr)}.board .big b{font-size:56px}}
+</style>
+<link rel="canonical" href="https://wheretogolondon.co.uk/blog/how-long-does-it-take-to-get-to-bank/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Where To Go London">
+<meta property="og:title" content="Commute Times to Bank From Every Part of London | Where To Go London">
+<meta property="og:description" content="How long it takes to get to Bank from every part of London, with a map of door-to-door times, the fastest and slowest commutes for the distance and every borough compared.">
+<meta property="og:url" content="https://wheretogolondon.co.uk/blog/how-long-does-it-take-to-get-to-bank/">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How long does it take to get to Bank from every part of London?", "description": "How long it takes to get to Bank from every part of London, with a map of door-to-door times, the fastest and slowest commutes for the distance and every borough compared.", "url": "https://wheretogolondon.co.uk/blog/how-long-does-it-take-to-get-to-bank/", "mainEntityOfPage": "https://wheretogolondon.co.uk/blog/how-long-does-it-take-to-get-to-bank/", "datePublished": "2026-10-28", "dateModified": "2026-10-28", "author": {"@type": "Person", "name": "Saul", "url": "https://wheretogolondon.co.uk/about/#who"}, "publisher": {"@id": "https://wheretogolondon.co.uk/#organization"}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://wheretogolondon.co.uk/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wheretogolondon.co.uk/blog/"}, {"@type": "ListItem", "position": 3, "name": "Commute times to Bank from every part of London", "item": "https://wheretogolondon.co.uk/blog/how-long-does-it-take-to-get-to-bank/"}]}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How long does it take to get to Bank from Orpington?", "acceptedAnswer": {"@type": "Answer", "text": "About 30 minutes door to door on a weekday morning. The quickest route is Southeastern to London Bridge, then the Northern line. Orpington is 12.3 miles from Bank, and a typical place that far out takes about 47 minutes."}}, {"@type": "Question", "name": "Which London borough has the shortest commute to Bank?", "acceptedAnswer": {"@type": "Answer", "text": "Tower Hamlets. Half its land is within 20 minutes of Bank. Westminster and Islington come next, with median door-to-door times of 26 and 27 minutes. We left out the City of London, because it is where everyone is going."}}, {"@type": "Question", "name": "Which London borough has the longest commute to Bank?", "acceptedAnswer": {"@type": "Answer", "text": "Hillingdon, with a median of 65 minutes, and none of it is within 45 minutes of Bank. Sutton is the only other borough with nowhere inside 45 minutes."}}, {"@type": "Question", "name": "Which station has the fastest commute to Bank for the distance?", "acceptedAnswer": {"@type": "Answer", "text": "Romford, Orpington, Upminster and Surbiton, at about 25mph in a straight line. Our times are accurate to a few minutes, so treat them as joint first. Under 10 miles out, East Croydon is the quickest, at 27 minutes for 9.6 miles."}}, {"@type": "Question", "name": "How much of London is within 45 minutes of Bank?", "acceptedAnswer": {"@type": "Answer", "text": "About a third (34%) of London’s land is within 45 minutes of Bank, door to door, and about three-quarters (76%) is within an hour. Half of London’s land is within 51 minutes. Use the buttons above the map to shade everywhere further out."}}, {"@type": "Question", "name": "Is it quicker to cycle to Bank than take public transport?", "acceptedAnswer": {"@type": "Answer", "text": "For about 6% of London’s land. The bike wins across most of Hackney (83% of the borough), Islington (81%) and Southwark (76%). We assumed a cyclist averaging 9mph on roads a quarter longer than the straight line, plus two minutes to lock up."}}, {"@type": "Question", "name": "Why does Google Maps show a shorter journey time?", "acceptedAnswer": {"@type": "Answer", "text": "Journey planners such as Google Maps assume you reach the platform just as the train arrives, so they can show times a few minutes shorter. Our times include a wait for the first train and for each change."}}, {"@type": "Question", "name": "Do these journey times include delays and strikes?", "acceptedAnswer": {"@type": "Answer", "text": "No. They are modelled times for a normal weekday morning, and they leave out delays, strikes, engineering works and crowding. Always check before you travel."}}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a><div class="staging"><div class="wrap"><div>Where To Go London</div><span>Blog</span></div></div><header class="topbar"><div class="wrap">
+<a href="../../" class="logo"><svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C7.86 2 4.5 5.36 4.5 9.5c0 5.25 6.24 11.34 6.99 12.02.29.26.7.26.99 0 .75-.68 6.99-6.77 6.99-12.02C19.5 5.36 16.14 2 12 2zm0 10.25a2.75 2.75 0 1 1 0-5.5 2.75 2.75 0 0 1 0 5.5z"/></svg><span>Where To Go London</span></a>
+<nav class="nav" aria-label="Main">
+<div class="navdrop"><a href="../../activities/">Activities</a><div class="navdrop-panel"><div class="navdrop-cat"><a href="../../activities/#darts">Darts<span class="nd-n">5</span></a><div class="navdrop-venues"><a href="../../activity/flight-club/shoreditch/">Flight Club, Shoreditch</a><a href="../../activity/flight-club/victoria/">Flight Club, Victoria</a><a href="../../activity/flight-club/bloomsbury/">Flight Club, Bloomsbury</a><a href="../../activity/flight-club/islington/">Flight Club, Islington</a><a href="../../activity/oche/the-strand/">Oche, The Strand</a><a class="nd-all" href="../../activities/#darts">All 5 &rarr;</a></div></div><div class="navdrop-cat"><a href="../../activities/#bowling">Bowling<span class="nd-n">7</span></a><div class="navdrop-venues"><a href="../../activity/rowans/finsbury-park/">Rowans, Finsbury Park</a><a href="../../activity/all-star-lanes/brick-lane/">All Star Lanes, Brick Lane</a><a href="../../activity/lane7/victoria/">Lane7, Victoria</a><a href="../../activity/all-star-lanes/holborn/">All Star Lanes, Holborn</a><a href="../../activity/all-star-lanes/stratford/">All Star Lanes, Stratford</a><a href="../../activity/all-star-lanes/white-city/">All Star Lanes, White City</a><a href="../../activity/hollywood-bowl/the-o2/">Hollywood Bowl, The O2</a><a class="nd-all" href="../../activities/#bowling">All 7 &rarr;</a></div></div><div class="navdrop-cat"><a href="../../activities/#golf">Golf &amp; crazy golf<span class="nd-n">4</span></a><div class="navdrop-venues"><a href="../../activity/puttshack/bank/">Puttshack, Bank</a><a href="../../activity/puttshack/white-city/">Puttshack, White City</a><a href="../../activity/swingers/west-end/">Swingers, West End</a><a href="../../activity/topgolf/chigwell/">Topgolf, Chigwell</a><a class="nd-all" href="../../activities/#golf">All 4 &rarr;</a></div></div><div class="navdrop-cat"><a href="../../activities/#shuffleboard">Shuffleboard &amp; boules<span class="nd-n">6</span></a><div class="navdrop-venues"><a href="../../activity/electric-shuffle/london-bridge/">Electric Shuffle, London Bridge<small>Shuffleboard</small></a><a href="../../activity/electric-shuffle/kings-cross/">Electric Shuffle, King’s Cross<small>Shuffleboard</small></a><a href="../../activity/electric-shuffle/canary-wharf/">Electric Shuffle, Canary Wharf<small>Shuffleboard</small></a><a href="../../activity/crazy-boules/elephant-and-castle/">Crazy Boules, Elephant &amp; Castle<small>Boules</small></a><a href="../../activity/boulebar/south-bank/">Boulebar, South Bank<small>Boules</small></a><a href="../../activity/boulebar/spitalfields/">Boulebar, Spitalfields<small>Boules</small></a><a class="nd-all" href="../../activities/#shuffleboard">All 6 &rarr;</a></div></div><div class="navdrop-cat"><a href="../../activities/#clays">Clay shooting<span class="nd-n">3</span></a><div class="navdrop-venues"><a href="../../activity/clays/soho/">Clays, Soho</a><a href="../../activity/clays/canary-wharf/">Clays, Canary Wharf</a><a href="../../activity/clays/city/">Clays, City</a><a class="nd-all" href="../../activities/#clays">All 3 &rarr;</a></div></div><div class="navdrop-cat"><a href="../../activities/#sports">Sports &amp; ice skating<span class="nd-n">9</span></a><div class="navdrop-venues"><a href="../../activity/bounce/battersea/">Bounce, Battersea<small>Ping pong</small></a><a href="../../activity/sixes-cricket/london-bridge/">Sixes Cricket, London Bridge<small>Cricket</small></a><a href="../../activity/toca-social/the-o2/">Toca Social, The O2<small>Football</small></a><a href="../../activity/toca-social/white-city/">Toca Social, White City<small>Football</small></a><a href="../../activity/sixes-cricket/stratford/">Sixes Cricket, Stratford<small>Cricket</small></a><a href="../../activity/sixes-cricket/wembley/">Sixes Cricket, Wembley<small>Cricket</small></a><a href="../../activity/alexandra-palace/ice-rink/">Alexandra Palace Ice Rink<small>Ice skating</small></a><a href="../../activity/lee-valley/ice-centre/">Lee Valley Ice Centre, Leyton<small>Ice skating</small></a><a href="../../activity/streatham/ice-rink/">Streatham Ice and Leisure Centre<small>Ice skating</small></a><a class="nd-all" href="../../activities/#sports">All 9 &rarr;</a></div></div><div class="navdrop-cat"><a href="../../activities/#bingo">Bingo &amp; karaoke<span class="nd-n">7</span></a><div class="navdrop-venues"><a href="../../activity/hijingo/shoreditch/">Hijingo, Shoreditch<small>Bingo</small></a><a href="../../activity/dabbers/aldgate/">Dabbers Social Bingo, Aldgate<small>Bingo</small></a><a href="../../activity/lucky-voice/soho/">Lucky Voice, Soho<small>Karaoke</small></a><a href="../../activity/lucky-voice/islington/">Lucky Voice, Islington<small>Karaoke</small></a><a href="../../activity/lucky-voice/liverpool-street/">Lucky Voice, Liverpool Street<small>Karaoke</small></a><a href="../../activity/lucky-voice/holborn/">Lucky Voice, Holborn<small>Karaoke</small></a><a href="../../activity/lucky-voice/waterloo/">Lucky Voice, Waterloo<small>Karaoke</small></a><a class="nd-all" href="../../activities/#bingo">All 7 &rarr;</a></div></div><div class="navdrop-cat"><a href="../../activities/#gaming">Arcades &amp; board games<span class="nd-n">6</span></a><div class="navdrop-venues"><a href="../../activity/nq64/shoreditch/">NQ64, Shoreditch<small>Retro arcade</small></a><a href="../../activity/nq64/soho/">NQ64, Soho<small>Retro arcade</small></a><a href="../../activity/fairgame/canary-wharf/">Fairgame, Canary Wharf<small>Fairground games</small></a><a href="../../activity/fairgame/city/">Fairgame, City<small>Fairground games</small></a><a href="../../activity/draughts/waterloo/">Draughts, Waterloo<small>Board games</small></a><a href="../../activity/draughts/stratford/">Draughts, Stratford<small>Board games</small></a><a class="nd-all" href="../../activities/#gaming">All 6 &rarr;</a></div></div><div class="navdrop-cat"><a href="../../activities/#immersive">Immersive &amp; escape rooms<span class="nd-n">9</span></a><div class="navdrop-venues"><a href="../../activity/spyscape/covent-garden/">SPYSCAPE, Covent Garden<small>Spy experience</small></a><a href="../../activity/crystal-maze/west-end/">The Crystal Maze LIVE Experience, West End<small>Game show</small></a><a href="../../activity/immersive-gamebox/southbank/">Immersive Gamebox, Southbank<small>Interactive games</small></a><a href="../../activity/cluequest/kings-cross/">clueQuest, King’s Cross<small>Escape rooms</small></a><a href="../../activity/mission-breakout/kentish-town/">Mission: Breakout, Kentish Town<small>Escape rooms</small></a><a href="../../activity/escape-hunt/oxford-street/">Escape Hunt, Oxford Street<small>Escape rooms</small></a><a href="../../activity/omescape/aldgate/">Omescape VR, Aldgate<small>VR</small></a><a href="../../activity/frameless/marble-arch/">Frameless, Marble Arch<small>Immersive art</small></a><a href="../../activity/paradox-museum/knightsbridge/">Paradox Museum, Knightsbridge<small>Illusions</small></a><a class="nd-all" href="../../activities/#immersive">All 9 &rarr;</a></div></div><div class="navdrop-cat"><a href="../../activities/#allrounders">All-rounders<span class="nd-n">10</span></a><div class="navdrop-venues"><a href="../../activity/boom-battle-bar/oxford-street/">Boom Battle Bar, Oxford Street</a><a href="../../activity/boom-battle-bar/liverpool-street/">Boom Battle Bar, Liverpool Street</a><a href="../../activity/boom-battle-bar/the-o2/">Boom Battle Bar, The O2</a><a href="../../activity/boom-battle-bar/wandsworth/">Boom Battle Bar, Wandsworth</a><a href="../../activity/boom-battle-bar/ealing/">Boom Battle Bar, Ealing</a><a href="../../activity/roxy-ball-room/old-street/">Roxy Ball Room, Old Street</a><a href="../../activity/roxy-ball-room/st-mary-axe/">Roxy Ball Room, St Mary Axe</a><a href="../../activity/roxy-ball-room/holborn/">Roxy Ball Room, Holborn</a><a href="../../activity/queens/bayswater/">Queens Skate Dine Bowl, Bayswater</a><a href="../../activity/gravity-max/wandsworth/">Gravity Max, Wandsworth</a><a class="nd-all" href="../../activities/#allrounders">All 10 &rarr;</a></div></div></div></div>
+<a href="../../featured-venues/">Featured venues</a>
+<a href="../../finder/">Finder</a>
+<a href="../../blog/">Blog</a>
+<a href="../../about/">About</a>
+<a href="../../contact/">Contact</a>
+</nav></div></header>
+<main id="main"><div class="wrap"><article class="post">
+<div class="masthead">
+<div class="crumbs"><a href="../../">Home</a> / <a href="../../blog/">Blog</a> / Commute times to Bank from every part of London</div>
+<span class="tag">Data guide</span>
+<h1 class="long">How long does it take to get to Bank from every part of London?</h1>
+<div class="byline"><span class="by"><span class="av" aria-hidden="true">S</span><span>Written by <b>Saul</b></span></span><span>Published <b>28 October 2026</b></span><span>Timetables checked <b>October 2026</b></span></div>
+</div>
+<figure class="pfig pfig--hero"><div class="ph" style="--c:#0060df"><img src="../../img/for-venues.jpg" alt="Tower Bridge and the Thames riverside at sunset" fetchpriority="high"></div></figure>
+<div class="introrow">
+<div class="short"><p class="kicker">The short answer</p><p>Romford, Orpington, Upminster and Surbiton have London’s fastest commutes to Bank for the distance. Each is 12 to 15 miles out, and fast trains get you to Bank at about 25mph in a straight line: Orpington takes about 30 minutes, door to door. The slowest for the distance is Crouch Hill in Islington, 39 minutes for 4.1 miles. Half of London’s land is within 51 minutes of Bank, and across most of Hackney, Islington and Southwark a bike is quicker than public transport.</p></div>
+<nav class="toc" aria-label="In this guide"><div class="toc-h">In this guide</div><ol><li><a href="#map"><span class="n">01</span><span>How long does it take to get to Bank from where you live?</span></a></li><li><a href="#fastest"><span class="n">02</span><span>Where is the fastest commute to Bank for the distance?</span></a></li><li><a href="#slowest"><span class="n">03</span><span>Where is the slowest commute to Bank for the distance?</span></a></li><li><a href="#same-distance"><span class="n">04</span><span>Why can places the same distance from Bank have very different commutes?</span></a></li><li><a href="#cycling"><span class="n">05</span><span>Is it quicker to cycle to Bank?</span></a></li><li><a href="#boroughs"><span class="n">06</span><span>How does your borough compare?</span></a></li><li><a href="#after"><span class="n">07</span><span>Where can you go near Bank after work?</span></a></li><li><a href="#method"><span class="n">08</span><span>How did we work out the journey times?</span></a></li><li><a href="#use"><span class="n">09</span><span>Can you use these figures?</span></a></li><li><a href="#faq"><span class="n">10</span><span>Common questions about getting to Bank</span></a></li></ol></nav>
+</div>
+<h2>Commute times to Bank at a glance</h2>
+<div class="scroller"><table class="data data--fixed"><thead><tr><th scope="col">Question</th><th scope="col">Answer</th><th scope="col">The figure</th></tr></thead><tbody><tr><th scope="row">Fastest commute</th><td><a href="#fastest">Romford, Orpington, Upminster and Surbiton</a></td><td><b>About 25mph</b>the fastest for the distance; Orpington takes about 30 minutes</td></tr><tr><th scope="row">Slowest commute</th><td><a href="#slowest">Crouch Hill, Islington</a></td><td><b>About 6mph</b>the slowest for the distance: 39 minutes for 4.1 miles</td></tr><tr><th scope="row">Quickest borough</th><td><a href="#boroughs">Tower Hamlets</a></td><td><b>20 minutes</b>median door-to-door time</td></tr><tr><th scope="row">Slowest borough</th><td><a href="#boroughs">Hillingdon</a></td><td><b>65 minutes</b>median, and nowhere within 45 minutes</td></tr><tr><th scope="row">Half of London</th><td>Half of London’s land is within this time of Bank</td><td><b>51 minutes</b>door to door</td></tr><tr><th scope="row">Bike is quicker</th><td><a href="#cycling">Hackney, Islington and Southwark</a></td><td><b>76% to 83%</b>of each borough’s land</td></tr></tbody></table></div>
+<p class="caption">Times are modelled door to door for a weekday morning and are accurate to a few minutes. Distances are in a straight line to Bank. See <a href="#method">how we worked this out</a>.</p>
+
+<section class="decidesec" id="map">
+<h2>How long does it take to get to Bank from where you live?</h2>
+<p class="post-p">Each hexagon on the map is about 400 metres across. Its colour shows how long it takes to get from there to Bank on a weekday morning, door to door. That covers the walk or bus to the station, the wait for a train, any changes and the walk up to the street at Bank.</p>
+<p class="post-p">Hover over or tap the map to see the route from any spot. You can also search for a station, or switch to <i>Quick or slow for the distance</i> to see which areas beat other places the same distance from Bank.</p>
+<div class="mapmod">
+<div class="mapmain">
+<div class="mapctl">
+<div class="chiprow" role="group" aria-label="Map colours"><button type="button" class="chip" id="v-time" aria-pressed="true">Minutes to Bank</button><button type="button" class="chip" id="v-dist" aria-pressed="false">Quick or slow for the distance</button></div>
+<div class="mapsearch"><input id="q" type="search" placeholder="Find a station" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="qlist" aria-label="Find a station"><ul id="qlist" role="listbox" hidden></ul></div>
+</div>
+<div class="chiprow reachrow" role="group" aria-label="Shade places further than"><span class="lbl">Shade everywhere over</span><button type="button" class="chip" data-reach="0" aria-pressed="true">Show all</button><button type="button" class="chip" data-reach="30" aria-pressed="false">30 min</button><button type="button" class="chip" data-reach="45" aria-pressed="false">45 min</button><button type="button" class="chip" data-reach="60" aria-pressed="false">60 min</button></div>
+<div class="mapbox" id="mapbox">
+<canvas id="mapc" aria-label="Map of London coloured by journey time to Bank" role="img"></canvas>
+<canvas id="mapo" aria-hidden="true"></canvas>
+<div class="mapload" id="mapload">Loading the map…</div>
+<div class="maphint" id="maphint" hidden>Hover or tap for the route</div>
+<div class="zoom"><button type="button" id="zin" aria-label="Zoom in">+</button><button type="button" id="zout" aria-label="Zoom out">−</button><button type="button" id="zreset" aria-label="Reset map" style="font-size:13px">⟲</button></div>
+</div>
+<div class="legend" id="legend"></div>
+<p class="reach" id="reach" aria-live="polite"></p>
+</div>
+<aside class="board" id="board" aria-live="polite" aria-label="Journey details"></aside>
+</div>
+</section>
+
+<section class="decidesec" id="fastest">
+<h2>Where is the fastest commute to Bank for the distance?</h2>
+<p class="post-p">We measured each station’s commute speed: the straight-line distance to Bank divided by the door-to-door time. A station 12 miles out with a 30-minute journey scores 24mph.</p>
+<p class="post-p">Four stations come out on top at about 25mph: Romford, Orpington, Upminster and Surbiton. Our times are accurate to a few minutes, so treat them as joint first. All four have fast trains to a terminus with a quick last hop to Bank. Romford has Greater Anglia to Liverpool Street, Orpington has Southeastern to London Bridge, Upminster has c2c to Fenchurch Street, and Surbiton has South Western Railway to Waterloo, where the Waterloo &amp; City line runs straight to Bank.</p>
+<p class="post-p">Orpington is 12.3 miles from Bank and takes about 30 minutes. A typical place that far out takes about 47. The Elizabeth line puts West Drayton, Hayes &amp; Harlington and Southall in the top ten, and East Croydon is the quickest station under 10 miles out, at 27 minutes for 9.6 miles.</p>
+<div class="scroller"><table class="data rankt"><thead><tr><th scope="col" class="n">#</th><th scope="col">Station</th><th scope="col" class="hide-sm">Borough</th><th scope="col" class="n">Miles</th><th scope="col" class="n">Minutes</th><th scope="col">Speed</th><th scope="col" class="hide-sm">Fastest route</th></tr></thead><tbody><tr><td class="n rank">1</td><td><button class="stn" type="button" data-st="Romford">Romford</button><small class="sm-only">Havering</small></td><td class="hide-sm">Havering</td><td class="n">12.5</td><td class="n">30</td><td><div class="speed"><span class="num">25 mph</span><i style="width:96%"></i></div></td><td class="route hide-sm">Greater Anglia to Liverpool Street, then Central line</td></tr>
+<tr><td class="n rank">2</td><td><button class="stn" type="button" data-st="Orpington">Orpington</button><small class="sm-only">Bromley</small></td><td class="hide-sm">Bromley</td><td class="n">12.3</td><td class="n">30</td><td><div class="speed"><span class="num">25 mph</span><i style="width:96%"></i></div></td><td class="route hide-sm">Southeastern to London Bridge, then Northern line</td></tr>
+<tr><td class="n rank">3</td><td><button class="stn" type="button" data-st="Upminster">Upminster</button><small class="sm-only">Havering</small></td><td class="hide-sm">Havering</td><td class="n">15.0</td><td class="n">37</td><td><div class="speed"><span class="num">25 mph</span><i style="width:95%"></i></div></td><td class="route hide-sm">c2c to Fenchurch Street, then District line from Tower Hill</td></tr>
+<tr><td class="n rank">4</td><td><button class="stn" type="button" data-st="Surbiton">Surbiton</button><small class="sm-only">Kingston upon Thames</small></td><td class="hide-sm">Kingston upon Thames</td><td class="n">12.5</td><td class="n">31</td><td><div class="speed"><span class="num">24 mph</span><i style="width:93%"></i></div></td><td class="route hide-sm">South Western Railway to Waterloo, then Waterloo &amp; City line</td></tr>
+<tr><td class="n rank">5</td><td><button class="stn" type="button" data-st="West Drayton">West Drayton</button><small class="sm-only">Hillingdon</small></td><td class="hide-sm">Hillingdon</td><td class="n">16.5</td><td class="n">43</td><td><div class="speed"><span class="num">23 mph</span><i style="width:88%"></i></div></td><td class="route hide-sm">Elizabeth line to Liverpool Street, then Central line</td></tr>
+<tr><td class="n rank">6</td><td><button class="stn" type="button" data-st="Hayes &amp; Harlington">Hayes &amp; Harlington</button><small class="sm-only">Hillingdon</small></td><td class="hide-sm">Hillingdon</td><td class="n">14.3</td><td class="n">39</td><td><div class="speed"><span class="num">22 mph</span><i style="width:84%"></i></div></td><td class="route hide-sm">Elizabeth line to Liverpool Street, then Central line</td></tr>
+<tr><td class="n rank">7</td><td><button class="stn" type="button" data-st="East Croydon">East Croydon</button><small class="sm-only">Croydon</small></td><td class="hide-sm">Croydon</td><td class="n">9.6</td><td class="n">27</td><td><div class="speed"><span class="num">21 mph</span><i style="width:82%"></i></div></td><td class="route hide-sm">Southern to London Bridge, then Northern line</td></tr>
+<tr><td class="n rank">8</td><td><button class="stn" type="button" data-st="Harrow &amp; Wealdstone">Harrow &amp; Wealdstone</button><small class="sm-only">Harrow</small></td><td class="hide-sm">Harrow</td><td class="n">11.8</td><td class="n">34</td><td><div class="speed"><span class="num">21 mph</span><i style="width:81%"></i></div></td><td class="route hide-sm">London Northwestern Railway to Euston, then Northern line</td></tr>
+<tr><td class="n rank">9</td><td><button class="stn" type="button" data-st="Southall">Southall</button><small class="sm-only">Ealing</small></td><td class="hide-sm">Ealing</td><td class="n">12.5</td><td class="n">36</td><td><div class="speed"><span class="num">21 mph</span><i style="width:79%"></i></div></td><td class="route hide-sm">Elizabeth line to Liverpool Street, then Central line</td></tr>
+<tr><td class="n rank">10</td><td><button class="stn" type="button" data-st="Heathrow Terminals 2 &amp; 3">Heathrow Terminals 2 &amp; 3</button><small class="sm-only">Hillingdon</small></td><td class="hide-sm">Hillingdon</td><td class="n">15.8</td><td class="n">47</td><td><div class="speed"><span class="num">20 mph</span><i style="width:77%"></i></div></td><td class="route hide-sm">Elizabeth line to Liverpool Street, then Central line</td></tr></tbody></table></div>
+<p class="caption">Stations at least 3 miles from Bank. Closer in, the fixed parts of any journey (the walk, the wait, the escalators) make every station look slow. Select a station to see it on the map.</p>
+</section>
+
+<section class="decidesec" id="slowest">
+<h2>Where is the slowest commute to Bank for the distance?</h2>
+<p class="post-p">Crouch Hill is 4.1 miles from Bank. Getting there takes about 39 minutes, an average of 6mph and 14 minutes slower than typical for somewhere that distance away.</p>
+<p class="post-p">Most of the slowest stations are on Overground lines that loop around London rather than run into it. To reach the City you have to change, often after a walk to a tube station. Gospel Oak, Upper Holloway, Leyton Midland Road and Imperial Wharf all work this way.</p>
+<div class="scroller"><table class="data rankt"><thead><tr><th scope="col" class="n">#</th><th scope="col">Station</th><th scope="col" class="hide-sm">Borough</th><th scope="col" class="n">Miles</th><th scope="col" class="n">Minutes</th><th scope="col">Speed</th><th scope="col" class="hide-sm">Fastest route</th></tr></thead><tbody><tr><td class="n rank">1</td><td><button class="stn" type="button" data-st="Crouch Hill">Crouch Hill</button><small class="sm-only">Islington</small></td><td class="hide-sm">Islington</td><td class="n">4.1</td><td class="n">39</td><td><div class="speed"><span class="num">6 mph</span><i style="width:25%"></i></div></td><td class="route hide-sm">Overground (Suffragette line) to Upper Holloway, then Northern line from Archway</td></tr>
+<tr><td class="n rank">2</td><td><button class="stn" type="button" data-st="Gospel Oak">Gospel Oak</button><small class="sm-only">Camden</small></td><td class="hide-sm">Camden</td><td class="n">3.9</td><td class="n">32</td><td><div class="speed"><span class="num">7 mph</span><i style="width:28%"></i></div></td><td class="route hide-sm">Overground (Mildmay line) to Camden Road, then Northern line from Camden Town</td></tr>
+<tr><td class="n rank">3</td><td><button class="stn" type="button" data-st="Kentish Town West">Kentish Town West</button><small class="sm-only">Camden</small></td><td class="hide-sm">Camden</td><td class="n">3.3</td><td class="n">27</td><td><div class="speed"><span class="num">7 mph</span><i style="width:28%"></i></div></td><td class="route hide-sm">Walk to Chalk Farm, then Northern line</td></tr>
+<tr><td class="n rank">4</td><td><button class="stn" type="button" data-st="Upper Holloway">Upper Holloway</button><small class="sm-only">Islington</small></td><td class="hide-sm">Islington</td><td class="n">3.8</td><td class="n">30</td><td><div class="speed"><span class="num">8 mph</span><i style="width:29%"></i></div></td><td class="route hide-sm">Walk to Archway, then Northern line</td></tr>
+<tr><td class="n rank">5</td><td><button class="stn" type="button" data-st="Arsenal">Arsenal</button><small class="sm-only">Islington</small></td><td class="hide-sm">Islington</td><td class="n">3.2</td><td class="n">25</td><td><div class="speed"><span class="num">8 mph</span><i style="width:29%"></i></div></td><td class="route hide-sm">Piccadilly line to Holborn, then Central line</td></tr>
+<tr><td class="n rank">6</td><td><button class="stn" type="button" data-st="Wandsworth Road">Wandsworth Road</button><small class="sm-only">Lambeth</small></td><td class="hide-sm">Lambeth</td><td class="n">3.7</td><td class="n">29</td><td><div class="speed"><span class="num">8 mph</span><i style="width:29%"></i></div></td><td class="route hide-sm">Overground (Windrush line) to Clapham High Street, then Northern line from Clapham North</td></tr>
+<tr><td class="n rank">7</td><td><button class="stn" type="button" data-st="Homerton">Homerton</button><small class="sm-only">Hackney</small></td><td class="hide-sm">Hackney</td><td class="n">3.1</td><td class="n">24</td><td><div class="speed"><span class="num">8 mph</span><i style="width:30%"></i></div></td><td class="route hide-sm">Overground (Mildmay line) to Stratford, then Central line</td></tr>
+<tr><td class="n rank">8</td><td><button class="stn" type="button" data-st="Devons Road">Devons Road</button><small class="sm-only">Tower Hamlets</small></td><td class="hide-sm">Tower Hamlets</td><td class="n">3.2</td><td class="n">25</td><td><div class="speed"><span class="num">8 mph</span><i style="width:30%"></i></div></td><td class="route hide-sm">DLR to West India Quay, then another DLR train</td></tr>
+<tr><td class="n rank">9</td><td><button class="stn" type="button" data-st="Leyton Midland Road">Leyton Midland Road</button><small class="sm-only">Waltham Forest</small></td><td class="hide-sm">Waltham Forest</td><td class="n">5.3</td><td class="n">41</td><td><div class="speed"><span class="num">8 mph</span><i style="width:30%"></i></div></td><td class="route hide-sm">Overground (Suffragette line) to Wanstead Park, then Elizabeth line from Forest Gate to Liverpool Street, then Central line</td></tr>
+<tr><td class="n rank">10</td><td><button class="stn" type="button" data-st="Imperial Wharf">Imperial Wharf</button><small class="sm-only">Hammersmith and Fulham</small></td><td class="hide-sm">Hammersmith and Fulham</td><td class="n">4.8</td><td class="n">37</td><td><div class="speed"><span class="num">8 mph</span><i style="width:30%"></i></div></td><td class="route hide-sm">Overground (Mildmay line) to Clapham Junction, then South Western Railway to Waterloo, then Waterloo &amp; City line</td></tr></tbody></table></div>
+<p class="caption">Stations at least 3 miles from Bank. Select a station to see it on the map.</p>
+</section>
+
+<section class="decidesec" id="same-distance">
+<h2>Why can places the same distance from Bank have very different commutes?</h2>
+<p class="post-p">Two places the same distance from Bank can be 20 minutes apart. It usually comes down to whether there is a fast train and how many changes you need.</p>
+<p class="post-p">Harrow &amp; Wealdstone and South Harrow are both 11.8 miles from Bank. From Harrow &amp; Wealdstone, the fast train to Euston gets you to Bank in about 34 minutes. From South Harrow, the Piccadilly line takes about 55. Kingston is a mile closer to Bank than Surbiton but takes 19 minutes longer, because Kingston’s trains stop all the way to Waterloo.</p>
+<p class="post-p">In Brent, Wembley Park is the best-connected station for its distance. The Metropolitan line’s fast trains take you to King’s Cross for the Northern line, about 38 minutes for 8.8 miles. Wembley Central, about a mile away, takes about 45.</p>
+<div class="pairs"><div class="pair"><h3>Harrow &amp; Wealdstone and South Harrow</h3><p class="cap">Both 11.8 miles from Bank, 21 minutes apart</p><div class="brow"><div class="lab">Harrow &amp; Wealdstone<small>11.8 miles</small></div><div class="bar" style="margin-right:3.6rem"><i style="width:56.0%;background:var(--s3)"></i><b style="left:56.0%">34 min</b></div></div><div class="brow"><div class="lab">South Harrow<small>11.8 miles</small></div><div class="bar" style="margin-right:3.6rem"><i style="width:92.0%;background:var(--s5)"></i><b style="left:92.0%">55 min</b></div></div><div class="axis" aria-hidden="true"><b></b><div style="margin-right:3.6rem"><span style="left:0.0%">0</span><span style="left:25.0%">15</span><span style="left:50.0%">30</span><span style="left:75.0%">45</span><span style="left:100.0%">60</span></div></div></div><div class="pair"><h3>Surbiton and Kingston</h3><p class="cap">Kingston is a mile closer, but 19 minutes slower</p><div class="brow"><div class="lab">Surbiton<small>12.5 miles</small></div><div class="bar" style="margin-right:3.6rem"><i style="width:51.7%;background:var(--s3)"></i><b style="left:51.7%">31 min</b></div></div><div class="brow"><div class="lab">Kingston<small>11.5 miles</small></div><div class="bar" style="margin-right:3.6rem"><i style="width:83.3%;background:var(--s5)"></i><b style="left:83.3%">50 min</b></div></div><div class="axis" aria-hidden="true"><b></b><div style="margin-right:3.6rem"><span style="left:0.0%">0</span><span style="left:25.0%">15</span><span style="left:50.0%">30</span><span style="left:75.0%">45</span><span style="left:100.0%">60</span></div></div></div><div class="pair"><h3>Romford and Kensal Rise</h3><p class="cap">Kensal Rise is 6.8 miles closer, but 10 minutes slower</p><div class="brow"><div class="lab">Romford<small>12.5 miles</small></div><div class="bar" style="margin-right:3.6rem"><i style="width:50.3%;background:var(--s3)"></i><b style="left:50.3%">30 min</b></div></div><div class="brow"><div class="lab">Kensal Rise<small>5.7 miles</small></div><div class="bar" style="margin-right:3.6rem"><i style="width:65.8%;background:var(--s3)"></i><b style="left:65.8%">40 min</b></div></div><div class="axis" aria-hidden="true"><b></b><div style="margin-right:3.6rem"><span style="left:0.0%">0</span><span style="left:25.0%">15</span><span style="left:50.0%">30</span><span style="left:75.0%">45</span><span style="left:100.0%">60</span></div></div></div><div class="pair"><h3>Orpington and Beckenham Junction</h3><p class="cap">Beckenham Junction is 4.7 miles closer, but 14 minutes slower</p><div class="brow"><div class="lab">Orpington<small>12.3 miles</small></div><div class="bar" style="margin-right:3.6rem"><i style="width:49.7%;background:var(--s2)"></i><b style="left:49.7%">30 min</b></div></div><div class="brow"><div class="lab">Beckenham Junction<small>7.6 miles</small></div><div class="bar" style="margin-right:3.6rem"><i style="width:73.7%;background:var(--s4)"></i><b style="left:73.7%">44 min</b></div></div><div class="axis" aria-hidden="true"><b></b><div style="margin-right:3.6rem"><span style="left:0.0%">0</span><span style="left:25.0%">15</span><span style="left:50.0%">30</span><span style="left:75.0%">45</span><span style="left:100.0%">60</span></div></div></div><div class="pair"><h3>Wembley Park and Wembley Central</h3><p class="cap">Wembley Central is 0.5 miles further out and 7 minutes slower</p><div class="brow"><div class="lab">Wembley Park<small>8.8 miles</small></div><div class="bar" style="margin-right:3.6rem"><i style="width:62.5%;background:var(--s3)"></i><b style="left:62.5%">38 min</b></div></div><div class="brow"><div class="lab">Wembley Central<small>9.3 miles</small></div><div class="bar" style="margin-right:3.6rem"><i style="width:74.2%;background:var(--s4)"></i><b style="left:74.2%">45 min</b></div></div><div class="axis" aria-hidden="true"><b></b><div style="margin-right:3.6rem"><span style="left:0.0%">0</span><span style="left:25.0%">15</span><span style="left:50.0%">30</span><span style="left:75.0%">45</span><span style="left:100.0%">60</span></div></div></div></div>
+</section>
+
+<section class="decidesec" id="cycling">
+<h2>Is it quicker to cycle to Bank?</h2>
+<p class="post-p">For about 6% of London’s land, yes. We compared each hexagon’s public transport time with a cyclist averaging 9mph on roads a quarter longer than the straight line, plus two minutes to lock up.</p>
+<p class="post-p">The bike wins across most of Hackney (83% of the borough), Islington (81%) and Southwark (76%). These boroughs are close to the City but short of direct lines into it. In Westminster, Tower Hamlets and Camden it wins in roughly a third of the borough.</p>
+<div class="cyc" role="img" aria-label="Share of each borough's land where cycling to Bank is quicker than public transport"><div class="brow"><div class="lab">City of London</div><div class="bar" style="margin-right:3rem"><i style="width:95%"></i><b style="left:95%">95%</b></div></div><div class="brow"><div class="lab">Hackney</div><div class="bar" style="margin-right:3rem"><i style="width:83%"></i><b style="left:83%">83%</b></div></div><div class="brow"><div class="lab">Islington</div><div class="bar" style="margin-right:3rem"><i style="width:81%"></i><b style="left:81%">81%</b></div></div><div class="brow"><div class="lab">Southwark</div><div class="bar" style="margin-right:3rem"><i style="width:76%"></i><b style="left:76%">76%</b></div></div><div class="brow"><div class="lab">Westminster</div><div class="bar" style="margin-right:3rem"><i style="width:40%"></i><b style="left:40%">40%</b></div></div><div class="brow"><div class="lab">Tower Hamlets</div><div class="bar" style="margin-right:3rem"><i style="width:35%"></i><b style="left:35%">35%</b></div></div><div class="brow"><div class="lab">Camden</div><div class="bar" style="margin-right:3rem"><i style="width:34%"></i><b style="left:34%">34%</b></div></div><div class="brow"><div class="lab">Lambeth</div><div class="bar" style="margin-right:3rem"><i style="width:11%"></i><b style="left:11%">11%</b></div></div><div class="brow"><div class="lab">Kensington and Chelsea</div><div class="bar" style="margin-right:3rem"><i style="width:10%"></i><b style="left:10%">10%</b></div></div><div class="brow"><div class="lab">Lewisham</div><div class="bar" style="margin-right:3rem"><i style="width:10%"></i><b style="left:10%">10%</b></div></div><div class="brow"><div class="lab">Haringey</div><div class="bar" style="margin-right:3rem"><i style="width:8%"></i><b style="left:8%">8%</b></div></div><div class="brow"><div class="lab">Waltham Forest</div><div class="bar" style="margin-right:3rem"><i style="width:6%"></i><b style="left:6%">6%</b></div></div><div class="axis" aria-hidden="true"><b></b><div style="margin-right:3rem"><span style="left:0%">0%</span><span style="left:25%">25%</span><span style="left:50%">50%</span><span style="left:75%">75%</span><span style="left:100%">100%</span></div></div></div>
+<p class="caption">Share of each borough’s land where a bike is quicker. Boroughs where it is 5% or more.</p>
+</section>
+
+<section class="decidesec" id="boroughs">
+<h2>How does your borough compare?</h2>
+<p class="post-p">Tower Hamlets has the shortest commutes: half its land is within 20 minutes of Bank. Hillingdon has the longest, with a median of 65 minutes, and none of it is within 45 minutes. Sutton is the only other borough with nowhere inside 45 minutes.</p>
+<p class="post-p">The table shows each borough’s median door-to-door time, the share of its land within 45 minutes, and its quickest and slowest stations for their distance. The figure beside each station is how many minutes quicker or slower it is than typical for a place that far from Bank. Select a borough to see it on the map.</p>
+<div class="tbar"><input id="bfilter" type="search" placeholder="Filter boroughs" aria-label="Filter boroughs"><span>The City of London is left out: it is where everyone is going.</span></div>
+<div class="scroller"><table class="data" id="btable" style="min-width:680px"><thead><tr><th scope="col"><button type="button" data-sort="name">Borough</button></th><th scope="col" class="n"><button type="button" data-sort="med" data-dir="asc">Median time</button></th><th scope="col" class="n"><button type="button" data-sort="p45">Within 45 min</button></th><th scope="col">Quickest for its distance</th><th scope="col">Slowest for its distance</th></tr></thead><tbody id="b-body"><tr class="pick" data-b="29" data-name="Tower Hamlets" data-med="19.8" data-p45="100"><td><b>Tower Hamlets</b></td><td class="n">20 min</td><td class="n">100%</td><td><button class="stn" type="button" data-st="West India Quay">West India Quay</button><br><span class="delta muted">13 min · 8 min quicker</span></td><td><button class="stn" type="button" data-st="Devons Road">Devons Road</button><br><span class="delta muted">25 min · 4 min slower</span></td></tr>
+<tr class="pick" data-b="32" data-name="Westminster" data-med="26.2" data-p45="100"><td><b>Westminster</b></td><td class="n">26 min</td><td class="n">100%</td><td><button class="stn" type="button" data-st="Queensway">Queensway</button><br><span class="delta muted">19 min · 6 min quicker</span></td><td><button class="stn" type="button" data-st="Pimlico">Pimlico</button><br><span class="delta muted">24 min · 6 min slower</span></td></tr>
+<tr class="pick" data-b="18" data-name="Islington" data-med="27.1" data-p45="100"><td><b>Islington</b></td><td class="n">27 min</td><td class="n">100%</td><td><button class="stn" type="button" data-st="Tufnell Park">Tufnell Park</button><br><span class="delta muted">22 min · about typical</span></td><td><button class="stn" type="button" data-st="Crouch Hill">Crouch Hill</button><br><span class="delta muted">39 min · 14 min slower</span></td></tr>
+<tr class="pick" data-b="27" data-name="Southwark" data-med="28.9" data-p45="93"><td><b>Southwark</b></td><td class="n">29 min</td><td class="n">93%</td><td><button class="stn" type="button" data-st="Kennington">Kennington</button><br><span class="delta muted">11 min · 5 min quicker</span></td><td><button class="stn" type="button" data-st="Sydenham Hill">Sydenham Hill</button><br><span class="delta muted">38 min · 8 min slower</span></td></tr>
+<tr class="pick" data-b="5" data-name="Camden" data-med="30.1" data-p45="100"><td><b>Camden</b></td><td class="n">30 min</td><td class="n">100%</td><td><button class="stn" type="button" data-st="Tottenham Court Road">Tottenham Court Road</button><br><span class="delta muted">11 min · 4 min quicker</span></td><td><button class="stn" type="button" data-st="Gospel Oak">Gospel Oak</button><br><span class="delta muted">32 min · 8 min slower</span></td></tr>
+<tr class="pick" data-b="11" data-name="Hackney" data-med="31.1" data-p45="100"><td><b>Hackney</b></td><td class="n">31 min</td><td class="n">100%</td><td><button class="stn" type="button" data-st="London Fields">London Fields</button><br><span class="delta muted">18 min · about typical</span></td><td><button class="stn" type="button" data-st="Dalston Kingsland">Dalston Kingsland</button><br><span class="delta muted">28 min · 10 min slower</span></td></tr>
+<tr class="pick" data-b="19" data-name="Kensington and Chelsea" data-med="31.6" data-p45="100"><td><b>Kensington and Chelsea</b></td><td class="n">32 min</td><td class="n">100%</td><td><button class="stn" type="button" data-st="Notting Hill Gate">Notting Hill Gate</button><br><span class="delta muted">21 min · 5 min quicker</span></td><td><button class="stn" type="button" data-st="Ladbroke Grove">Ladbroke Grove</button><br><span class="delta muted">31 min · 3 min slower</span></td></tr>
+<tr class="pick" data-b="21" data-name="Lambeth" data-med="31.6" data-p45="96"><td><b>Lambeth</b></td><td class="n">32 min</td><td class="n">96%</td><td><button class="stn" type="button" data-st="Clapham North">Clapham North</button><br><span class="delta muted">17 min · 6 min quicker</span></td><td><button class="stn" type="button" data-st="Gipsy Hill">Gipsy Hill</button><br><span class="delta muted">40 min · 8 min slower</span></td></tr>
+<tr class="pick" data-b="24" data-name="Newham" data-med="32.7" data-p45="95"><td><b>Newham</b></td><td class="n">33 min</td><td class="n">95%</td><td><button class="stn" type="button" data-st="Stratford">Stratford</button><br><span class="delta muted">15 min · 10 min quicker</span></td><td><button class="stn" type="button" data-st="Star Lane">Star Lane</button><br><span class="delta muted">28 min · 3 min slower</span></td></tr>
+<tr class="pick" data-b="22" data-name="Lewisham" data-med="35.8" data-p45="90"><td><b>Lewisham</b></td><td class="n">36 min</td><td class="n">90%</td><td><button class="stn" type="button" data-st="Hither Green">Hither Green</button><br><span class="delta muted">22 min · 8 min quicker</span></td><td><button class="stn" type="button" data-st="Beckenham Hill">Beckenham Hill</button><br><span class="delta muted">38 min · 5 min slower</span></td></tr>
+<tr class="pick" data-b="31" data-name="Wandsworth" data-med="37.1" data-p45="83"><td><b>Wandsworth</b></td><td class="n">37 min</td><td class="n">83%</td><td><button class="stn" type="button" data-st="Tooting Bec">Tooting Bec</button><br><span class="delta muted">24 min · 7 min quicker</span></td><td><button class="stn" type="button" data-st="Southfields">Southfields</button><br><span class="delta muted">38 min · 5 min slower</span></td></tr>
+<tr class="pick" data-b="12" data-name="Hammersmith and Fulham" data-med="38.0" data-p45="95"><td><b>Hammersmith and Fulham</b></td><td class="n">38 min</td><td class="n">95%</td><td><button class="stn" type="button" data-st="Shepherd&#x27;s Bush">Shepherd&#x27;s Bush</button><br><span class="delta muted">24 min · 5 min quicker</span></td><td><button class="stn" type="button" data-st="Imperial Wharf">Imperial Wharf</button><br><span class="delta muted">37 min · 10 min slower</span></td></tr>
+<tr class="pick" data-b="13" data-name="Haringey" data-med="39.2" data-p45="85"><td><b>Haringey</b></td><td class="n">39 min</td><td class="n">85%</td><td><button class="stn" type="button" data-st="Tottenham Hale">Tottenham Hale</button><br><span class="delta muted">23 min · 5 min quicker</span></td><td><button class="stn" type="button" data-st="Harringay Green Lanes">Harringay Green Lanes</button><br><span class="delta muted">34 min · 8 min slower</span></td></tr>
+<tr class="pick" data-b="25" data-name="Redbridge" data-med="40.7" data-p45="69"><td><b>Redbridge</b></td><td class="n">41 min</td><td class="n">69%</td><td><button class="stn" type="button" data-st="Woodford">Woodford</button><br><span class="delta muted">26 min · 11 min quicker</span></td><td><button class="stn" type="button" data-st="Goodmayes">Goodmayes</button><br><span class="delta muted">33 min · 7 min quicker</span></td></tr>
+<tr class="pick" data-b="30" data-name="Waltham Forest" data-med="41.9" data-p45="60"><td><b>Waltham Forest</b></td><td class="n">42 min</td><td class="n">60%</td><td><button class="stn" type="button" data-st="Leytonstone">Leytonstone</button><br><span class="delta muted">20 min · 10 min quicker</span></td><td><button class="stn" type="button" data-st="Leyton Midland Road">Leyton Midland Road</button><br><span class="delta muted">41 min · 12 min slower</span></td></tr>
+<tr class="pick" data-b="10" data-name="Greenwich" data-med="42.5" data-p45="64"><td><b>Greenwich</b></td><td class="n">43 min</td><td class="n">64%</td><td><button class="stn" type="button" data-st="Woolwich">Woolwich</button><br><span class="delta muted">23 min · 11 min quicker</span></td><td><button class="stn" type="button" data-st="Deptford Bridge">Deptford Bridge</button><br><span class="delta muted">26 min · 2 min slower</span></td></tr>
+<tr class="pick" data-b="23" data-name="Merton" data-med="46.2" data-p45="43"><td><b>Merton</b></td><td class="n">46 min</td><td class="n">43%</td><td><button class="stn" type="button" data-st="Colliers Wood">Colliers Wood</button><br><span class="delta muted">28 min · 7 min quicker</span></td><td><button class="stn" type="button" data-st="St Helier">St Helier</button><br><span class="delta muted">53 min · 12 min slower</span></td></tr>
+<tr class="pick" data-b="8" data-name="Ealing" data-med="47.5" data-p45="38"><td><b>Ealing</b></td><td class="n">48 min</td><td class="n">38%</td><td><button class="stn" type="button" data-st="Southall">Southall</button><br><span class="delta muted">36 min · 11 min quicker</span></td><td><button class="stn" type="button" data-st="Sudbury Hill">Sudbury Hill</button><br><span class="delta muted">53 min · 9 min slower</span></td></tr>
+<tr class="pick" data-b="0" data-name="Barking and Dagenham" data-med="48.8" data-p45="27"><td><b>Barking and Dagenham</b></td><td class="n">49 min</td><td class="n">27%</td><td><button class="stn" type="button" data-st="Barking">Barking</button><br><span class="delta muted">27 min · 8 min quicker</span></td><td><button class="stn" type="button" data-st="Barking Riverside">Barking Riverside</button><br><span class="delta muted">43 min · 4 min slower</span></td></tr>
+<tr class="pick" data-b="3" data-name="Brent" data-med="49.4" data-p45="25"><td><b>Brent</b></td><td class="n">49 min</td><td class="n">25%</td><td><button class="stn" type="button" data-st="Wembley Park">Wembley Park</button><br><span class="delta muted">38 min · about typical</span></td><td><button class="stn" type="button" data-st="Kensal Rise">Kensal Rise</button><br><span class="delta muted">40 min · 9 min slower</span></td></tr>
+<tr class="pick" data-b="1" data-name="Barnet" data-med="49.9" data-p45="27"><td><b>Barnet</b></td><td class="n">50 min</td><td class="n">27%</td><td><button class="stn" type="button" data-st="Golders Green">Golders Green</button><br><span class="delta muted">28 min · 3 min quicker</span></td><td><button class="stn" type="button" data-st="Cricklewood">Cricklewood</button><br><span class="delta muted">32 min · about typical</span></td></tr>
+<tr class="pick" data-b="7" data-name="Croydon" data-med="52.5" data-p45="21"><td><b>Croydon</b></td><td class="n">53 min</td><td class="n">21%</td><td><button class="stn" type="button" data-st="East Croydon">East Croydon</button><br><span class="delta muted">27 min · 13 min quicker</span></td><td><button class="stn" type="button" data-st="Woodmansterne">Woodmansterne</button><br><span class="delta muted">60 min · 10 min slower</span></td></tr>
+<tr class="pick" data-b="20" data-name="Kingston upon Thames" data-med="54.7" data-p45="9"><td><b>Kingston upon Thames</b></td><td class="n">55 min</td><td class="n">9%</td><td><button class="stn" type="button" data-st="Surbiton">Surbiton</button><br><span class="delta muted">31 min · 16 min quicker</span></td><td><button class="stn" type="button" data-st="Kingston">Kingston</button><br><span class="delta muted">50 min · 5 min slower</span></td></tr>
+<tr class="pick" data-b="2" data-name="Bexley" data-med="54.9" data-p45="6"><td><b>Bexley</b></td><td class="n">55 min</td><td class="n">6%</td><td><button class="stn" type="button" data-st="Belvedere">Belvedere</button><br><span class="delta muted">36 min · 6 min quicker</span></td><td><button class="stn" type="button" data-st="Barnehurst">Barnehurst</button><br><span class="delta muted">48 min · 3 min slower</span></td></tr>
+<tr class="pick" data-b="9" data-name="Enfield" data-med="55.5" data-p45="6"><td><b>Enfield</b></td><td class="n">56 min</td><td class="n">6%</td><td><button class="stn" type="button" data-st="Hadley Wood">Hadley Wood</button><br><span class="delta muted">44 min · about typical</span></td><td><button class="stn" type="button" data-st="Southbury">Southbury</button><br><span class="delta muted">49 min · 9 min slower</span></td></tr>
+<tr class="pick" data-b="26" data-name="Richmond upon Thames" data-med="57.2" data-p45="8"><td><b>Richmond upon Thames</b></td><td class="n">57 min</td><td class="n">8%</td><td><button class="stn" type="button" data-st="Richmond">Richmond</button><br><span class="delta muted">35 min · 6 min quicker</span></td><td><button class="stn" type="button" data-st="Fulwell">Fulwell</button><br><span class="delta muted">58 min · 11 min slower</span></td></tr>
+<tr class="pick" data-b="14" data-name="Harrow" data-med="57.6" data-p45="4"><td><b>Harrow</b></td><td class="n">58 min</td><td class="n">4%</td><td><button class="stn" type="button" data-st="Harrow &amp; Wealdstone">Harrow &amp; Wealdstone</button><br><span class="delta muted">34 min · 12 min quicker</span></td><td><button class="stn" type="button" data-st="South Harrow">South Harrow</button><br><span class="delta muted">55 min · 10 min slower</span></td></tr>
+<tr class="pick" data-b="4" data-name="Bromley" data-med="58.0" data-p45="12"><td><b>Bromley</b></td><td class="n">58 min</td><td class="n">12%</td><td><button class="stn" type="button" data-st="Orpington">Orpington</button><br><span class="delta muted">30 min · 17 min quicker</span></td><td><button class="stn" type="button" data-st="Birkbeck">Birkbeck</button><br><span class="delta muted">47 min · 11 min slower</span></td></tr>
+<tr class="pick" data-b="28" data-name="Sutton" data-med="59.7" data-p45="0"><td><b>Sutton</b></td><td class="n">60 min</td><td class="n">0%</td><td><button class="stn" type="button" data-st="Hackbridge">Hackbridge</button><br><span class="delta muted">42 min · about typical</span></td><td><button class="stn" type="button" data-st="Belmont">Belmont</button><br><span class="delta muted">66 min · 18 min slower</span></td></tr>
+<tr class="pick" data-b="17" data-name="Hounslow" data-med="59.8" data-p45="4"><td><b>Hounslow</b></td><td class="n">60 min</td><td class="n">4%</td><td><button class="stn" type="button" data-st="Feltham">Feltham</button><br><span class="delta muted">46 min · 6 min quicker</span></td><td><button class="stn" type="button" data-st="Hounslow">Hounslow</button><br><span class="delta muted">55 min · 8 min slower</span></td></tr>
+<tr class="pick" data-b="15" data-name="Havering" data-med="60.0" data-p45="5"><td><b>Havering</b></td><td class="n">60 min</td><td class="n">5%</td><td><button class="stn" type="button" data-st="Romford">Romford</button><br><span class="delta muted">30 min · 17 min quicker</span></td><td><button class="stn" type="button" data-st="Rainham">Rainham</button><br><span class="delta muted">45 min · 2 min quicker</span></td></tr>
+<tr class="pick" data-b="16" data-name="Hillingdon" data-med="64.8" data-p45="0"><td><b>Hillingdon</b></td><td class="n">65 min</td><td class="n">0%</td><td><button class="stn" type="button" data-st="West Drayton">West Drayton</button><br><span class="delta muted">43 min · 13 min quicker</span></td><td><button class="stn" type="button" data-st="Uxbridge">Uxbridge</button><br><span class="delta muted">64 min · 7 min slower</span></td></tr></tbody></table></div>
+<p class="caption">Median time is the middle value across all of a borough’s land. Select a column heading to sort the table.</p>
+</section>
+
+<section class="decidesec" id="after">
+<h2>Where can you go near Bank after work?</h2>
+<p class="post-p">If your commute ends at Bank, these activity bars are in the City, within walking distance of the station.</p>
+<p class="where">Venue pages</p>
+<ul class="vgrid"><li><a class="vc" href="../../activity/puttshack/bank/"><b>Puttshack, Bank</b><span>Crazy golf</span></a></li><li><a class="vc" href="../../activity/roxy-ball-room/st-mary-axe/"><b>Roxy Ball Room, St Mary Axe</b><span>Games bar</span></a></li><li><a class="vc" href="../../activity/fairgame/city/"><b>Fairgame, City</b><span>Fairground games</span></a></li><li><a class="vc" href="../../activity/clays/city/"><b>Clays, City</b><span>Virtual clay shooting</span></a></li><li><a class="vc" href="../../activity/boom-battle-bar/liverpool-street/"><b>Boom Battle Bar, Liverpool Street</b><span>Games bar</span></a></li><li><a class="vc" href="../../activity/dabbers/aldgate/"><b>Dabbers Social Bingo, Aldgate</b><span>Bingo</span></a></li></ul>
+</section>
+
+<section class="decidesec" id="method">
+<h2>How did we work out the journey times?</h2>
+<p class="post-p"><b>Where to.</b> Bank station, at street level, on a weekday morning.</p>
+<p class="post-p"><b>The network.</b> Every tube, DLR, Elizabeth line, Overground and tram line in London, plus National Rail services into the London terminals, built from timetabled running times between stations and typical peak frequencies. We checked National Rail and Overground timings against published timetables for more than 30 journeys, including Orpington to London Bridge (15 minutes on fast trains) and Surbiton to Waterloo (15 to 16 minutes).</p>
+<p class="post-p"><b>Door to door.</b> Walking at 4.8km/h on streets 20% longer than the straight line. Where a station is more than half a kilometre away, a bus is used if it is quicker: 7 minutes to walk to the stop and wait, then 11km/h. The wait for the first train is 2 minutes on frequent lines, rising to 7.5 minutes where trains run every 30 minutes. Each change adds half the gap between trains plus about 3 minutes between platforms, more at the big terminals.</p>
+<p class="post-p"><b>Distance and speed.</b> Distance is the straight line from the hexagon or station to Bank. Speed is that distance divided by the door-to-door time.</p>
+<p class="post-p"><b>For the distance.</b> We fitted a curve of typical journey time against distance across London. A place is quicker or slower than typical when it beats or misses that curve. For example, the typical time for 12.3 miles is about 47 minutes, so Orpington’s 30 is 17 minutes quicker.</p>
+<p class="post-p"><b>Limits.</b> These are modelled times for a normal morning. They leave out delays, strikes, engineering works and crowding, and buses are modelled simply, so places far from any station, such as around Biggin Hill, are the least precise. Journey planners such as Google Maps can show times a few minutes shorter, because they assume you reach the platform just as the train arrives.</p>
+<div class="agebox"><p><b>Journey times are modelled and change with timetables.</b> Always check before you travel.</p></div>
+<p class="caption"><b>Sources.</b> Station locations: Powered by TfL Open Data, contains OS data © Crown copyright and database rights 2026; uk-railway-stations by David Wheatley and the Trainline EU stations dataset, Open Database Licence, including data © OpenStreetMap contributors. Borough boundaries: Office for National Statistics, Open Government Licence, contains OS data © Crown copyright and database right. Tube running times: the open tubemaps dataset. National Rail times checked against published operator timetables, October 2026.</p>
+</section>
+
+<section class="decidesec" id="use">
+<h2>Can you use these figures?</h2>
+<p class="post-p">Journalists and local sites are welcome to use the map and figures. Please credit Where To Go London and link to this page.</p>
+<p class="creditline" id="credit">Source: Where To Go London (wheretogolondon.co.uk), modelled weekday-morning journey times to Bank, October 2026.</p>
+<div class="copyrow"><button type="button" class="btn btn--ghost" id="c-credit">Copy credit line</button><button type="button" class="btn btn--ghost" id="c-bor">Copy borough table (CSV)</button><button type="button" class="btn btn--ghost" id="c-st">Copy all stations (CSV)</button></div>
+<textarea class="fallback" id="fallback" hidden aria-label="Copy this text"></textarea>
+<p class="copied" id="copied" aria-live="polite"></p>
+</section>
+
+<section class="decidesec faqsec" id="faq">
+<h2>Common questions about getting to Bank</h2>
+<dl><dt>How long does it take to get to Bank from Orpington?</dt><dd>About 30 minutes door to door on a weekday morning. The quickest route is Southeastern to London Bridge, then the Northern line. Orpington is 12.3 miles from Bank, and a typical place that far out takes about 47 minutes.</dd><dt>Which London borough has the shortest commute to Bank?</dt><dd>Tower Hamlets. Half its land is within 20 minutes of Bank. Westminster and Islington come next, with median door-to-door times of 26 and 27 minutes. We left out the City of London, because it is where everyone is going.</dd><dt>Which London borough has the longest commute to Bank?</dt><dd>Hillingdon, with a median of 65 minutes, and none of it is within 45 minutes of Bank. Sutton is the only other borough with nowhere inside 45 minutes.</dd><dt>Which station has the fastest commute to Bank for the distance?</dt><dd>Romford, Orpington, Upminster and Surbiton, at about 25mph in a straight line. Our times are accurate to a few minutes, so treat them as joint first. Under 10 miles out, East Croydon is the quickest, at 27 minutes for 9.6 miles.</dd><dt>How much of London is within 45 minutes of Bank?</dt><dd>About a third (34%) of London’s land is within 45 minutes of Bank, door to door, and about three-quarters (76%) is within an hour. Half of London’s land is within 51 minutes. Use the buttons above the <a href="#map">map</a> to shade everywhere further out.</dd><dt>Is it quicker to cycle to Bank than take public transport?</dt><dd>For about 6% of London’s land. The bike wins across most of Hackney (83% of the borough), Islington (81%) and Southwark (76%). We assumed a cyclist averaging 9mph on roads a quarter longer than the straight line, plus two minutes to lock up.</dd><dt>Why does Google Maps show a shorter journey time?</dt><dd>Journey planners such as Google Maps assume you reach the platform just as the train arrives, so they can show times a few minutes shorter. Our times include a wait for the first train and for each change.</dd><dt>Do these journey times include delays and strikes?</dt><dd>No. They are modelled times for a normal weekday morning, and they leave out delays, strikes, engineering works and crowding. Always check before you travel.</dd></dl>
+</section>
+
+</article></div>
+<div class="ctaband"><div class="wrap"><h2>Compare every venue by activity</h2><a class="btn btn--big btn--orange" href="../../activities/">Browse the activities</a></div></div>
+</main>
+<footer><div class="wrap">
+<div class="fgrid">
+<div><h3>Activities</h3><ul><li><a href="../../activities/#darts">Darts</a></li><li><a href="../../activities/#bowling">Bowling</a></li><li><a href="../../activities/#golf">Golf &amp; crazy golf</a></li><li><a href="../../activities/#shuffleboard">Shuffleboard &amp; boules</a></li><li><a href="../../activities/#clays">Clay shooting</a></li><li><a href="../../activities/#sports">Sports &amp; ice skating</a></li><li><a href="../../activities/#bingo">Bingo &amp; karaoke</a></li><li><a href="../../activities/#gaming">Arcades &amp; board games</a></li><li><a href="../../activities/#immersive">Immersive &amp; escape rooms</a></li><li><a href="../../activities/#allrounders">All-rounders</a></li></ul></div>
+<div><h3>Venues</h3><ul><li><a href="../../activity/flight-club/shoreditch/">Flight Club, Shoreditch</a></li><li><a href="../../activity/flight-club/victoria/">Flight Club, Victoria</a></li><li><a href="../../activity/flight-club/bloomsbury/">Flight Club, Bloomsbury</a></li><li><a href="../../activity/flight-club/islington/">Flight Club, Islington</a></li><li><a href="../../activity/oche/the-strand/">Oche, The Strand</a></li><li><a href="../../activity/rowans/finsbury-park/">Rowans, Finsbury Park</a></li><li><a href="../../activity/all-star-lanes/brick-lane/">All Star Lanes, Brick Lane</a></li><li><a href="../../activity/lane7/victoria/">Lane7, Victoria</a></li><li><a href="../../activity/all-star-lanes/holborn/">All Star Lanes, Holborn</a></li><li><a href="../../activity/all-star-lanes/stratford/">All Star Lanes, Stratford</a></li><li><a href="../../activity/all-star-lanes/white-city/">All Star Lanes, White City</a></li><li><a href="../../activity/hollywood-bowl/the-o2/">Hollywood Bowl, The O2</a></li><li><a href="../../activity/puttshack/bank/">Puttshack, Bank</a></li><li><a href="../../activity/puttshack/white-city/">Puttshack, White City</a></li><li><a href="../../activity/swingers/west-end/">Swingers, West End</a></li><li><a href="../../activity/topgolf/chigwell/">Topgolf, Chigwell</a></li><li><a href="../../activity/electric-shuffle/london-bridge/">Electric Shuffle, London Bridge</a></li><li><a href="../../activity/electric-shuffle/kings-cross/">Electric Shuffle, King’s Cross</a></li><li><a href="../../activity/electric-shuffle/canary-wharf/">Electric Shuffle, Canary Wharf</a></li><li><a href="../../activity/crazy-boules/elephant-and-castle/">Crazy Boules, Elephant &amp; Castle</a></li><li><a href="../../activity/boulebar/south-bank/">Boulebar, South Bank</a></li><li><a href="../../activity/boulebar/spitalfields/">Boulebar, Spitalfields</a></li><li><a href="../../activity/clays/soho/">Clays, Soho</a></li><li><a href="../../activity/clays/canary-wharf/">Clays, Canary Wharf</a></li><li><a href="../../activity/clays/city/">Clays, City</a></li><li><a href="../../activity/bounce/battersea/">Bounce, Battersea</a></li><li><a href="../../activity/sixes-cricket/london-bridge/">Sixes Cricket, London Bridge</a></li><li><a href="../../activity/toca-social/the-o2/">Toca Social, The O2</a></li><li><a href="../../activity/toca-social/white-city/">Toca Social, White City</a></li><li><a href="../../activity/sixes-cricket/stratford/">Sixes Cricket, Stratford</a></li><li><a href="../../activity/sixes-cricket/wembley/">Sixes Cricket, Wembley</a></li><li><a href="../../activity/alexandra-palace/ice-rink/">Alexandra Palace Ice Rink</a></li><li><a href="../../activity/lee-valley/ice-centre/">Lee Valley Ice Centre, Leyton</a></li><li><a href="../../activity/streatham/ice-rink/">Streatham Ice and Leisure Centre</a></li><li><a href="../../activity/hijingo/shoreditch/">Hijingo, Shoreditch</a></li><li><a href="../../activity/dabbers/aldgate/">Dabbers Social Bingo, Aldgate</a></li><li><a href="../../activity/lucky-voice/soho/">Lucky Voice, Soho</a></li><li><a href="../../activity/lucky-voice/islington/">Lucky Voice, Islington</a></li><li><a href="../../activity/lucky-voice/liverpool-street/">Lucky Voice, Liverpool Street</a></li><li><a href="../../activity/lucky-voice/holborn/">Lucky Voice, Holborn</a></li><li><a href="../../activity/lucky-voice/waterloo/">Lucky Voice, Waterloo</a></li><li><a href="../../activity/nq64/shoreditch/">NQ64, Shoreditch</a></li><li><a href="../../activity/nq64/soho/">NQ64, Soho</a></li><li><a href="../../activity/fairgame/canary-wharf/">Fairgame, Canary Wharf</a></li><li><a href="../../activity/fairgame/city/">Fairgame, City</a></li><li><a href="../../activity/draughts/waterloo/">Draughts, Waterloo</a></li><li><a href="../../activity/draughts/stratford/">Draughts, Stratford</a></li><li><a href="../../activity/spyscape/covent-garden/">SPYSCAPE, Covent Garden</a></li><li><a href="../../activity/crystal-maze/west-end/">The Crystal Maze LIVE Experience, West End</a></li><li><a href="../../activity/immersive-gamebox/southbank/">Immersive Gamebox, Southbank</a></li><li><a href="../../activity/cluequest/kings-cross/">clueQuest, King’s Cross</a></li><li><a href="../../activity/mission-breakout/kentish-town/">Mission: Breakout, Kentish Town</a></li><li><a href="../../activity/escape-hunt/oxford-street/">Escape Hunt, Oxford Street</a></li><li><a href="../../activity/omescape/aldgate/">Omescape VR, Aldgate</a></li><li><a href="../../activity/frameless/marble-arch/">Frameless, Marble Arch</a></li><li><a href="../../activity/paradox-museum/knightsbridge/">Paradox Museum, Knightsbridge</a></li><li><a href="../../activity/boom-battle-bar/oxford-street/">Boom Battle Bar, Oxford Street</a></li><li><a href="../../activity/boom-battle-bar/liverpool-street/">Boom Battle Bar, Liverpool Street</a></li><li><a href="../../activity/boom-battle-bar/the-o2/">Boom Battle Bar, The O2</a></li><li><a href="../../activity/boom-battle-bar/wandsworth/">Boom Battle Bar, Wandsworth</a></li><li><a href="../../activity/boom-battle-bar/ealing/">Boom Battle Bar, Ealing</a></li><li><a href="../../activity/roxy-ball-room/old-street/">Roxy Ball Room, Old Street</a></li><li><a href="../../activity/roxy-ball-room/st-mary-axe/">Roxy Ball Room, St Mary Axe</a></li><li><a href="../../activity/roxy-ball-room/holborn/">Roxy Ball Room, Holborn</a></li><li><a href="../../activity/queens/bayswater/">Queens Skate Dine Bowl, Bayswater</a></li><li><a href="../../activity/gravity-max/wandsworth/">Gravity Max, Wandsworth</a></li></ul></div>
+<div><h3>Where To Go London</h3><ul>
+<li><a href="../../finder/">Venue finder</a></li>
+<li><a href="../../blog/">Blog</a></li>
+<li><a href="../../about/">About</a></li>
+<li><a href="../../about/#corrections">Corrections</a></li>
+<li><a href="../../for-venues/">For venues</a></li>
+<li><a href="../../contact/">Contact</a></li>
+<li><a href="https://www.linkedin.com/company/where-to-go-london/" rel="noopener" target="_blank">LinkedIn</a></li>
+</ul></div>
+<div><h3>Coming soon</h3><ul>
+<li class="soon">Occasions</li>
+<li class="soon">Areas of London</li>
+<li class="soon">Christmas parties</li>
+</ul></div>
+</div>
+<div class="fbase">
+<p>Where To Go London is an independent guide to competitive socialising venues in London.</p>
+<p>Prices are sampled directly from venue booking flows and drift over time. Always check before you book.</p>
+<p>&copy; 2026 Where To Go London</p>
+</div>
+</div></footer>
+<script>
+(function () {
+  "use strict";
+  const load = document.getElementById("mapload");
+  fetch("commute-data.json").then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(init, () => { load.textContent = "The map could not load. Refresh the page to try again."; });
+
+  function init(D) {
+    load.remove(); document.getElementById("maphint").hidden = false;
+    const R = D.R, SQ3 = Math.sqrt(3), MI = 1.609344;
+    const C = D.cells, N = C.t.length, ST = D.stations, RT = D.routes, BO = D.boroughs;
+    const coefS = D.stats.coef, coefC = D.stats.coefc;
+    const expS = m => coefS[0] + coefS[1] * m + coefS[2] * Math.sqrt(m);
+    const expC = m => coefC[0] + coefC[1] * m + coefC[2] * Math.sqrt(m);
+
+    // ---------- geometry ----------
+    const X = new Float32Array(N), Y = new Float32Array(N), KM = new Float32Array(N), DEV = new Float32Array(N);
+    const key = new Map();
+    let bx0 = 1e9, bx1 = -1e9, by0 = 1e9, by1 = -1e9;
+    for (let i = 0; i < N; i++) {
+      const q = C.q[i], r = C.r[i];
+      X[i] = q * 1.5 * R; Y[i] = r * SQ3 * R + ((q & 1) ? SQ3 * R / 2 : 0);
+      KM[i] = Math.hypot(X[i], Y[i]); DEV[i] = C.t[i] - expC(KM[i] / MI);
+      key.set(q + "," + r, i);
+      bx0 = Math.min(bx0, X[i]); bx1 = Math.max(bx1, X[i]); by0 = Math.min(by0, Y[i]); by1 = Math.max(by1, Y[i]);
+    }
+    bx0 -= 1.2; bx1 += 1.2; by0 -= 1.2; by1 += 1.2;
+    const rail = ST.map((s, i) => i).filter(i => ST[i].b >= 0 && !ST[i].tram && ST[i].n !== "Bank");
+
+    function hexAt(x, y) {
+      const qf = (2 / 3 * x) / R, rf = (-1 / 3 * x + SQ3 / 3 * y) / R, sf = -qf - rf;
+      let q = Math.round(qf), r = Math.round(rf), s = Math.round(sf);
+      const dq = Math.abs(q - qf), dr = Math.abs(r - rf), ds = Math.abs(s - sf);
+      if (dq > dr && dq > ds) q = -r - s; else if (dr > ds) r = -q - s;
+      const row = r + (q - (q & 1)) / 2;
+      const i = key.get(q + "," + row);
+      return i === undefined ? -1 : i;
+    }
+
+    // ---------- colours ----------
+    const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+    let COL = {};
+    function readColours() {
+      COL = { seq: [1,2,3,4,5,6,7,8].map(k => css("--s" + k)), div: [1,2,3,4,5,6,7].map(k => css("--d" + k)),
+        dim: css("--dim-cell"), line: css("--map-line"), strong: css("--ink"), ink: css("--ink"),
+        halo: css("--halo"), bg: css("--paper"), accent: css("--racing") };
+    }
+    const TBINS = [20, 30, 40, 50, 60, 75, 90];
+    const tBin = t => { let k = 0; while (k < TBINS.length && t >= TBINS[k]) k++; return k; };
+    const dBin = d => d < -12 ? 0 : d < -6 ? 1 : d < -2 ? 2 : d <= 2 ? 3 : d <= 6 ? 4 : d <= 12 ? 5 : 6;
+    const LINECOL = { BAK: "--l-bak", CEN: "--l-cen", CIR: "--l-cir", DIS: "--l-dis", HAM: "--l-ham", JUB: "--l-jub", MET: "--l-met",
+      NOR: "--l-nor", PIC: "--l-pic", VIC: "--l-vic", WAC: "--l-wac", ELZ: "--l-elz", DLR: "--l-dlr", LO: "--l-lo", TRM: "--l-trm", NR: "--l-nr" };
+    const DARKTEXT = new Set(["CIR", "HAM", "JUB", "WAC", "TRM"]);
+    const SHORT = { "South Western Railway": "SWR", "London Northwestern Railway": "LNR", "Chiltern Railways": "Chiltern",
+      "Greater Anglia": "Gt Anglia", "Great Northern": "Gt Northern", "Waterloo & City line": "W&City", "Hammersmith & City line": "H&City" };
+    function shortName(label) {
+      if (SHORT[label]) return SHORT[label];
+      if (label.startsWith("Overground")) return "Overground";
+      return label.replace(/ line$/, "");
+    }
+
+    // ---------- map state ----------
+    const box = document.getElementById("mapbox"), cv = document.getElementById("mapc"), ov = document.getElementById("mapo");
+    const ctx = cv.getContext("2d"), octx = ov.getContext("2d");
+    let W = 0, H = 0, DPR = 1, view = { k: 1, cx: (bx0 + bx1) / 2, cy: (by0 + by1) / 2 };
+    let mode = "time", reach = 0, hover = -1, pinned = { type: "station", i: ST.findIndex(s => s.n === "Orpington") }, hiBorough = -1;
+    const base = () => W / (bx1 - bx0);
+    const sx = x => (x - view.cx) * base() * view.k + W / 2;
+    const sy = y => (y - view.cy) * base() * view.k + H / 2;
+    const wx = px => (px - W / 2) / (base() * view.k) + view.cx;
+    const wy = py => (py - H / 2) / (base() * view.k) + view.cy;
+
+    function size() {
+      W = box.clientWidth; H = Math.round(W * (by1 - by0) / (bx1 - bx0));
+      DPR = Math.min(window.devicePixelRatio || 1, 2);
+      for (const c of [cv, ov]) { c.width = Math.round(W * DPR); c.height = Math.round(H * DPR); c.style.height = H + "px"; c.style.width = W + "px"; }
+      box.style.height = H + "px";
+      draw(); drawOverlay();
+    }
+    function clampView() {
+      view.k = Math.max(1, Math.min(9, view.k));
+      const hw = (bx1 - bx0) / 2 * (1 - 1 / view.k), hh = (by1 - by0) / 2 * (1 - 1 / view.k);
+      const mx = (bx0 + bx1) / 2, my = (by0 + by1) / 2;
+      view.cx = Math.max(mx - hw, Math.min(mx + hw, view.cx));
+      view.cy = Math.max(my - hh, Math.min(my + hh, view.cy));
+      cv.style.touchAction = ov.style.touchAction = view.k > 1.01 ? "none" : "pan-y";
+    }
+
+    function cellColour(i) {
+      if (reach && C.t[i] > reach) return COL.dim;
+      return mode === "time" ? COL.seq[tBin(C.t[i])] : COL.div[dBin(DEV[i])];
+    }
+    const LABELS = [["Romford","Romford"],["Upminster","Upminster"],["Orpington","Orpington"],["Bromley","Bromley South"],["Croydon","East Croydon"],
+      ["Sutton","Sutton"],["Kingston","Kingston"],["Richmond","Richmond"],["Heathrow","Heathrow Terminals 2 & 3"],["Uxbridge","Uxbridge"],
+      ["Harrow","Harrow-on-the-Hill"],["Wembley","Wembley Park"],["Ealing","Ealing Broadway"],["Barnet","High Barnet"],["Enfield","Enfield Town"],
+      ["Walthamstow","Walthamstow Central"],["Stratford","Stratford"],["Ilford","Ilford"],["Barking","Barking"],["Woolwich","Woolwich"],
+      ["Bexleyheath","Bexleyheath"],["Lewisham","Lewisham"],["Brixton","Brixton"],["Wimbledon","Wimbledon"],["Hammersmith","Hammersmith"],
+      ["Hampstead","Hampstead"],["Tottenham","Tottenham Hale"],["Hounslow","Hounslow"],["Edgware","Edgware"],["Hackney","Hackney Central"],
+      ["Clapham","Clapham Junction"],["Canary Wharf","Canary Wharf"],["Surbiton","Surbiton"],["Feltham","Feltham"]]
+      .map(([lab, n]) => { const i = ST.findIndex(s => s.n === n); return i < 0 ? null : { lab, i }; }).filter(Boolean);
+
+    function draw() {
+      if (!W) return;
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+      const s = base() * view.k, rr = R * s * 1.035;
+      const corn = []; for (let j = 0; j < 6; j++) { const a = Math.PI / 3 * j; corn.push([Math.cos(a) * rr, Math.sin(a) * rr]); }
+      const buckets = new Map();
+      for (let i = 0; i < N; i++) {
+        const px = sx(X[i]), py = sy(Y[i]);
+        if (px < -rr || px > W + rr || py < -rr || py > H + rr) continue;
+        const c = cellColour(i);
+        let b = buckets.get(c); if (!b) { b = []; buckets.set(c, b); }
+        b.push(px, py);
+      }
+      for (const [c, arr] of buckets) {
+        ctx.fillStyle = c; ctx.beginPath();
+        for (let k = 0; k < arr.length; k += 2) {
+          const px = arr[k], py = arr[k + 1];
+          ctx.moveTo(px + corn[0][0], py + corn[0][1]);
+          for (let j = 1; j < 6; j++) ctx.lineTo(px + corn[j][0], py + corn[j][1]);
+          ctx.closePath();
+        }
+        ctx.fill();
+      }
+      // borough outlines
+      ctx.lineJoin = "round";
+      BO.forEach((b, bi) => {
+        ctx.beginPath();
+        for (const ring of b.rings) { ring.forEach((p, k) => { const px = sx(p[0]), py = sy(p[1]); k ? ctx.lineTo(px, py) : ctx.moveTo(px, py); }); ctx.closePath(); }
+        ctx.strokeStyle = bi === hiBorough ? COL.strong : COL.line; ctx.lineWidth = bi === hiBorough ? 2.2 : 0.7; ctx.stroke();
+      });
+      // station dots when zoomed
+      const placed = [];
+      const fits = (x0, y0, x1, y1) => { if (x0 < 2 || y0 < 2 || x1 > W - 2 || y1 > H - 2) return false; for (const p of placed) if (!(x1 < p[0] || x0 > p[2] || y1 < p[1] || y0 > p[3])) return false; placed.push([x0, y0, x1, y1]); return true; };
+      // Bank marker
+      const bxp = sx(0), byp = sy(0);
+      ctx.beginPath(); ctx.arc(bxp, byp, 5.5, 0, Math.PI * 2); ctx.fillStyle = COL.bg; ctx.fill(); ctx.lineWidth = 2.5; ctx.strokeStyle = COL.ink; ctx.stroke();
+      ctx.font = "800 13px " + css("--display");
+      label("Bank", bxp + 9, byp + 4, true); placed.push([bxp - 8, byp - 8, bxp + 48, byp + 10]);
+      ctx.font = (W < 600 ? "600 10.5px " : "600 11.5px ") + css("--display");
+      const few = W < 600 && view.k < 1.6;
+      const MAJOR = new Set(["Romford","Orpington","Croydon","Kingston","Richmond","Heathrow","Uxbridge","Harrow","Wembley","Enfield","Barnet","Stratford","Walthamstow","Brixton","Woolwich","Bexleyheath","Sutton","Ealing"]);
+      for (const L of LABELS) {
+        if (few && !MAJOR.has(L.lab)) continue;
+        const s0 = ST[L.i], px = sx(s0.x), py = sy(s0.y), w = ctx.measureText(L.lab).width;
+        if (fits(px - w / 2 - 3, py - 17, px + w / 2 + 3, py - 3)) label(L.lab, px - w / 2, py - 6);
+      }
+      if (view.k >= 2.2) {
+        ctx.font = "500 10.5px " + css("--display");
+        for (const i of rail) {
+          const px = sx(ST[i].x), py = sy(ST[i].y);
+          if (px < 0 || px > W || py < 0 || py > H) continue;
+          ctx.beginPath(); ctx.arc(px, py, 2.6, 0, Math.PI * 2); ctx.fillStyle = COL.bg; ctx.fill(); ctx.lineWidth = 1.2; ctx.strokeStyle = COL.ink; ctx.stroke();
+          const w = ctx.measureText(ST[i].n).width;
+          if (fits(px + 4, py - 7, px + 8 + w, py + 6)) label(ST[i].n, px + 5, py + 3.5);
+        }
+      }
+    }
+    function label(t, x, y, strong) {
+      ctx.lineWidth = 3.5; ctx.strokeStyle = COL.halo; ctx.lineJoin = "round"; ctx.strokeText(t, x, y);
+      ctx.fillStyle = strong ? COL.ink : COL.ink; ctx.fillText(t, x, y);
+    }
+    function hexPath(c, i, grow) {
+      const s = base() * view.k, rr = R * s * (grow || 1), px = sx(X[i]), py = sy(Y[i]);
+      c.beginPath(); for (let j = 0; j < 6; j++) { const a = Math.PI / 3 * j; const x = px + Math.cos(a) * rr, y = py + Math.sin(a) * rr; j ? c.lineTo(x, y) : c.moveTo(x, y); } c.closePath();
+    }
+    function drawOverlay() {
+      if (!W) return;
+      octx.setTransform(DPR, 0, 0, DPR, 0, 0); octx.clearRect(0, 0, W, H);
+      const pin = (px, py) => { octx.beginPath(); octx.arc(px, py, 7, 0, Math.PI * 2); octx.fillStyle = COL.accent; octx.fill(); octx.lineWidth = 2.5; octx.strokeStyle = COL.bg; octx.stroke(); };
+      if (pinned.type === "cell" && pinned.i >= 0) { hexPath(octx, pinned.i, 1.15); octx.lineWidth = 3; octx.strokeStyle = COL.accent; octx.stroke(); }
+      if (pinned.type === "station" && pinned.i >= 0) pin(sx(ST[pinned.i].x), sy(ST[pinned.i].y));
+      if (hover >= 0) { hexPath(octx, hover, 1.12); octx.lineWidth = 2; octx.strokeStyle = COL.strong; octx.stroke(); }
+    }
+
+    // ---------- legend + reach ----------
+    function legend() {
+      const el = document.getElementById("legend");
+      if (mode === "time") {
+        const labs = ["<20", "20–30", "30–40", "40–50", "50–60", "60–75", "75–90", "90+"];
+        el.innerHTML = '<div class="ttl">Door-to-door minutes to Bank</div><div class="ramp">' + labs.map((l, k) => `<div><i style="background:var(--s${k + 1})"></i><span>${l}</span></div>`).join("") + "</div>";
+      } else {
+        const labs = ["12+", "6–12", "2–6", "±2", "2–6", "6–12", "12+"];
+        el.innerHTML = '<div class="ttl">Minutes quicker or slower than typical for the distance</div><div class="ramp">' + labs.map((l, k) => `<div><i style="background:var(--d${k + 1})"></i><span>${l}</span></div>`).join("") + '</div><div class="ends"><span>← Quicker</span><span>Slower →</span></div>';
+      }
+      const r = document.getElementById("reach");
+      if (reach) { let n = 0; for (let i = 0; i < N; i++) if (C.t[i] <= reach) n++; r.innerHTML = `<b>${Math.round(n / N * 100)}%</b> of London's land is within ${reach} minutes of Bank.`; }
+      else r.innerHTML = `Half of London's land is within <b>${Math.round(D.stats.median)} minutes</b> of Bank.`;
+    }
+
+    // ---------- board ----------
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    function chip(code, label) {
+      const cls = "lchip" + (DARKTEXT.has(code) ? " dark" : "") + (code === "NOR" ? " nor" : "");
+      return `<span class="${cls}" style="background:var(${LINECOL[code] || "--l-nr"})">${esc(shortName(label))}</span>`;
+    }
+    function legRows(L, opts) {
+      const rows = []; let lastTo = null;
+      for (const l of L) {
+        if (l[0] === "r") { rows.push(`<li>${chip(l[2], l[1])}<span class="what">${esc(l[3])} → ${esc(l[4])}<small>${esc(l[1])}</small></span><span class="m">${l[5]} min</span></li>`); lastTo = l[4]; }
+        else if (l[0] === "q") rows.push(`<li class="minor"><span class="dot"></span><span class="what">Wait for the train</span><span class="m">${l[1]} min</span></li>`);
+        else if (l[0] === "c") rows.push(`<li class="minor"><span class="dot"></span><span class="what">Change trains</span><span class="m">${l[1]} min</span></li>`);
+        else if (l[0] === "w") rows.push(`<li class="minor"><span class="dot"></span><span class="what">Walk to ${esc(l[2])}</span><span class="m">${l[1]} min</span></li>`);
+        else if (l[0] === "e") rows.push(`<li class="minor"><span class="dot"></span><span class="what">${lastTo === "Bank" ? "Up to the street at Bank" : "Walk to Bank" + (lastTo ? " from " + esc(lastTo) : "")}</span><span class="m">${l[1]} min</span></li>`);
+      }
+      return rows.join("");
+    }
+    const fmtMi = m => m.toFixed(1) + " miles";
+    function devText(d) { const r = Math.round(d); if (Math.abs(r) < 2) return "About typical"; return Math.abs(r) + " min " + (r < 0 ? "quicker" : "slower"); }
+    function boardStation(i) {
+      const s = ST[i], b = s.b >= 0 ? BO[s.b].name : "Outside London", t = Math.round(s.t), mph = s.mi / (s.t / 60);
+      return `<div class="top"><span>From station</span><span>To Bank</span></div>
+        <div><div class="place">${esc(s.n)}</div><div class="bsub">${esc(b)}</div></div>
+        <div class="big"><b>${t}</b><span>min</span></div>
+        <div class="facts"><div><span>Distance</span>${fmtMi(s.mi)}</div><div><span>Average speed</span>${mph.toFixed(0)} mph</div><div><span>Vs typical for ${s.mi.toFixed(0)} miles</span>${devText(s.t - expS(s.mi))}</div></div>
+        <ol>${legRows(s.L)}</ol>
+        <div class="hint">Times are door to door from the station entrance on a weekday morning.</div>`;
+    }
+    function boardCell(i) {
+      const near = ST[C.n[i]], via = RT[C.v[i]], b = C.b[i] >= 0 ? BO[C.b[i]].name : "", mi = KM[i] / MI, t = Math.round(C.t[i]);
+      let first;
+      if (C.m[i] === 2) first = `<li class="minor"><span class="dot"></span><span class="what">Walk to Bank</span><span class="m">${Math.round(C.a[i])} min</span></li>`;
+      else if (C.m[i] === 1) first = `<li class="minor"><span class="dot"></span><span class="what">Bus or walk to ${esc(via.n)}<small>includes walking to the stop and waiting</small></span><span class="m">${Math.round(C.a[i])} min</span></li>`;
+      else first = `<li class="minor"><span class="dot"></span><span class="what">Walk to ${esc(via.n)}</span><span class="m">${Math.max(1, Math.round(C.a[i]))} min</span></li>`;
+      const legs = C.m[i] === 2 ? "" : legRows(via.L);
+      return `<div class="top"><span>From this spot</span><span>To Bank</span></div>
+        <div><div class="place">Near ${esc(near.n)}</div><div class="bsub">${esc(b)}</div></div>
+        <div class="big"><b>${t}</b><span>min</span></div>
+        <div class="facts"><div><span>Distance</span>${fmtMi(mi)}</div><div><span>Average speed</span>${(mi / (C.t[i] / 60)).toFixed(0)} mph</div><div><span>Vs typical for ${mi.toFixed(0)} miles</span>${devText(DEV[i])}</div></div>
+        <ol>${first}${legs}</ol>
+        <div class="hint">Leg times are rounded, so they can differ from the total by a minute.</div>`;
+    }
+    const board = document.getElementById("board");
+    function renderBoard() {
+      if (hover >= 0) board.innerHTML = boardCell(hover);
+      else if (pinned.type === "cell" && pinned.i >= 0) board.innerHTML = boardCell(pinned.i);
+      else if (pinned.type === "station" && pinned.i >= 0) board.innerHTML = boardStation(pinned.i);
+    }
+
+    // ---------- interaction ----------
+    let raf = 0;
+    const schedule = (full) => { if (raf) { if (full) needFull = true; return; } needFull = !!full; raf = requestAnimationFrame(() => { raf = 0; if (needFull) draw(); drawOverlay(); }); };
+    let needFull = false;
+    function localXY(e) { const r = ov.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
+    let drag = null;
+    ov.addEventListener("pointerdown", e => {
+      const [px, py] = localXY(e);
+      drag = { x: px, y: py, cx: view.cx, cy: view.cy, moved: false, id: e.pointerId, type: e.pointerType };
+      if (view.k > 1.01 || e.pointerType === "mouse") { try { ov.setPointerCapture(e.pointerId); } catch (_) {} }
+    });
+    ov.addEventListener("pointermove", e => {
+      const [px, py] = localXY(e);
+      if (drag && drag.id === e.pointerId) {
+        const dx = px - drag.x, dy = py - drag.y;
+        if (Math.hypot(dx, dy) > 4) drag.moved = true;
+        if (drag.moved && view.k > 1.01) { view.cx = drag.cx - dx / (base() * view.k); view.cy = drag.cy - dy / (base() * view.k); clampView(); schedule(true); return; }
+      }
+      if (e.pointerType === "mouse") {
+        const i = hexAt(wx(px), wy(py));
+        if (i !== hover) { hover = i; renderBoard(); schedule(false); }
+      }
+    });
+    ov.addEventListener("pointerup", e => {
+      if (drag && !drag.moved) {
+        const [px, py] = localXY(e);
+        let hit = -1;
+        if (view.k >= 2.2) { let bd = 81; for (const i of rail) { const d = (sx(ST[i].x) - px) ** 2 + (sy(ST[i].y) - py) ** 2; if (d < bd) { bd = d; hit = i; } } }
+        if (hit >= 0) pinned = { type: "station", i: hit };
+        else { const i = hexAt(wx(px), wy(py)); if (i >= 0) pinned = { type: "cell", i }; }
+        hover = e.pointerType === "mouse" ? hover : -1;
+        if (e.pointerType !== "mouse") hover = -1;
+        renderBoard(); schedule(false);
+        document.getElementById("maphint").hidden = true;
+      }
+      drag = null;
+    });
+    ov.addEventListener("pointercancel", () => { drag = null; });
+    ov.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") { hover = -1; renderBoard(); schedule(false); } });
+    ov.addEventListener("dblclick", e => { const [px, py] = localXY(e); zoomAt(wx(px), wy(py), 1.8); });
+    function zoomAt(x, y, f) { view.k *= f; view.cx = x - (x - view.cx) / f; view.cy = y - (y - view.cy) / f; clampView(); schedule(true); }
+    document.getElementById("zin").onclick = () => zoomAt(view.cx, view.cy, 1.6);
+    document.getElementById("zout").onclick = () => zoomAt(view.cx, view.cy, 1 / 1.6);
+    document.getElementById("zreset").onclick = () => { view = { k: 1, cx: (bx0 + bx1) / 2, cy: (by0 + by1) / 2 }; hiBorough = -1; clampView(); schedule(true); };
+    function focusOn(x, y, k) { view.k = Math.max(view.k, k); view.cx = x; view.cy = y; clampView(); schedule(true); }
+
+    const vt = document.getElementById("v-time"), vd = document.getElementById("v-dist");
+    function setMode(m) { mode = m; vt.setAttribute("aria-pressed", m === "time"); vd.setAttribute("aria-pressed", m === "dist"); legend(); schedule(true); }
+    vt.onclick = () => setMode("time"); vd.onclick = () => setMode("dist");
+    document.querySelectorAll("[data-reach]").forEach(b => b.onclick = () => {
+      reach = +b.dataset.reach;
+      document.querySelectorAll("[data-reach]").forEach(x => x.setAttribute("aria-pressed", x === b));
+      legend(); schedule(true);
+    });
+
+    function selectStation(i, scroll) {
+      pinned = { type: "station", i }; hover = -1; hiBorough = -1;
+      focusOn(ST[i].x, ST[i].y, 2.6); renderBoard();
+      if (scroll) box.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    }
+
+    // search
+    const q = document.getElementById("q"), ql = document.getElementById("qlist");
+    const names = rail.map(i => ({ i, n: ST[i].n, k: ST[i].n.toLowerCase() })).sort((a, b) => a.n.localeCompare(b.n));
+    let qsel = 0, qres = [];
+    function showList() {
+      const v = q.value.trim().toLowerCase();
+      if (!v) { ql.hidden = true; q.setAttribute("aria-expanded", "false"); return; }
+      qres = names.filter(o => o.k.startsWith(v)).concat(names.filter(o => !o.k.startsWith(v) && o.k.includes(v))).slice(0, 8);
+      qsel = 0;
+      ql.innerHTML = qres.length ? qres.map((o, k) => `<li role="option" id="qo${k}" aria-selected="${k === 0}" data-k="${k}">${esc(o.n)}<small>${Math.round(ST[o.i].t)} min</small></li>`).join("") : '<li role="option" aria-disabled="true">No station by that name</li>';
+      ql.hidden = false; q.setAttribute("aria-expanded", "true");
+    }
+    function pickResult(k) { const o = qres[k]; if (!o) return; q.value = o.n; ql.hidden = true; q.setAttribute("aria-expanded", "false"); selectStation(o.i, false); }
+    q.addEventListener("input", showList);
+    q.addEventListener("keydown", e => {
+      if (ql.hidden) return;
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); qsel = (qsel + (e.key === "ArrowDown" ? 1 : -1) + qres.length) % qres.length; ql.querySelectorAll("li").forEach((li, k) => li.setAttribute("aria-selected", k === qsel)); }
+      else if (e.key === "Enter") { e.preventDefault(); pickResult(qsel); }
+      else if (e.key === "Escape") { ql.hidden = true; }
+    });
+    ql.addEventListener("mousedown", e => { const li = e.target.closest("li[data-k]"); if (li) { e.preventDefault(); pickResult(+li.dataset.k); } });
+    q.addEventListener("blur", () => setTimeout(() => { ql.hidden = true; q.setAttribute("aria-expanded", "false"); }, 120));
+
+    // tables: station rows select on map
+    document.querySelectorAll("[data-st]").forEach(el => el.addEventListener("click", () => {
+      const i = ST.findIndex(s => s.n === el.dataset.st); if (i >= 0) selectStation(i, true);
+    }));
+
+    // borough table: sort, filter, select
+    const btb = document.getElementById("b-body");
+    const brows = Array.from(btb.querySelectorAll("tr"));
+    document.querySelectorAll("#btable th button").forEach(btn => btn.addEventListener("click", () => {
+      const k = btn.dataset.sort, dir = btn.dataset.dir === "asc" ? "desc" : "asc";
+      document.querySelectorAll("#btable th button").forEach(b => b.removeAttribute("data-dir")); btn.dataset.dir = dir;
+      const val = tr => k === "name" ? tr.dataset.name : +tr.dataset[k];
+      brows.sort((a, b) => { const va = val(a), vb = val(b); const c = typeof va === "string" ? va.localeCompare(vb) : va - vb; return dir === "asc" ? c : -c; });
+      brows.forEach(tr => btb.appendChild(tr));
+    }));
+    document.getElementById("bfilter").addEventListener("input", e => {
+      const v = e.target.value.trim().toLowerCase();
+      brows.forEach(tr => tr.hidden = !!v && !tr.dataset.name.toLowerCase().includes(v));
+    });
+    brows.forEach(tr => tr.addEventListener("click", e => {
+      if (e.target.closest("[data-st]")) return;
+      const bi = +tr.dataset.b; hiBorough = bi;
+      let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
+      for (const ring of BO[bi].rings) for (const p of ring) { x0 = Math.min(x0, p[0]); x1 = Math.max(x1, p[0]); y0 = Math.min(y0, p[1]); y1 = Math.max(y1, p[1]); }
+      view.k = Math.min(4, 0.8 * Math.min((bx1 - bx0) / (x1 - x0), (by1 - by0) / (y1 - y0)));
+      view.cx = (x0 + x1) / 2; view.cy = (y0 + y1) / 2; clampView();
+      const bs = BO[bi].best; if (bs >= 0) pinned = { type: "station", i: bs };
+      renderBoard(); schedule(true);
+      box.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    }));
+
+    // copy buttons
+    const msg = document.getElementById("copied"), fb = document.getElementById("fallback");
+    function copy(text, what) {
+      const done = () => { msg.textContent = what + " copied."; fb.hidden = true; };
+      const fail = () => { fb.hidden = false; fb.value = text; fb.focus(); fb.select(); msg.textContent = "Your browser blocked copying. The text is selected below: press Ctrl+C or Cmd+C."; };
+      try { navigator.clipboard.writeText(text).then(done, fail); } catch (_) { fail(); }
+    }
+    const csvq = v => /[",\n]/.test(String(v)) ? '"' + String(v).replace(/"/g, '""') + '"' : String(v);
+    const routeTxt = s => s.L.filter(l => l[0] === "r").map(l => l[1] + " to " + l[4]).join("; ");
+    document.getElementById("c-credit").onclick = () => copy(document.getElementById("credit").textContent.trim(), "Credit line");
+    document.getElementById("c-bor").onclick = () => {
+      const rows = [["borough", "median_minutes", "pct_land_within_45_min", "pct_land_bike_quicker", "quickest_station", "quickest_minutes", "quickest_vs_typical", "slowest_station", "slowest_minutes", "slowest_vs_typical"]];
+      BO.forEach(b => { if (b.best < 0) return; const s = ST[b.best], w = ST[b.worst];
+        rows.push([b.name, Math.round(b.med), b.p45, b.cyc, s.n, Math.round(s.t), Math.round(s.t - expS(s.mi)), w.n, Math.round(w.t), Math.round(w.t - expS(w.mi))]); });
+      copy(rows.map(r => r.map(csvq).join(",")).join("\n"), "Borough table");
+    };
+    document.getElementById("c-st").onclick = () => {
+      const rows = [["station", "borough", "miles_to_bank", "minutes_door_to_door", "speed_mph", "vs_typical_minutes", "route"]];
+      rail.slice().sort((a, b) => ST[a].n.localeCompare(ST[b].n)).forEach(i => { const s = ST[i];
+        rows.push([s.n, BO[s.b].name, s.mi.toFixed(1), Math.round(s.t), (s.mi / (s.t / 60)).toFixed(1), Math.round(s.t - expS(s.mi)), routeTxt(s)]); });
+      copy(rows.map(r => r.map(csvq).join(",")).join("\n"), "Station table");
+    };
+
+    // resize
+    if ("ResizeObserver" in window) new ResizeObserver(() => { if (box.clientWidth !== W) size(); }).observe(box);
+    else window.addEventListener("resize", size);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => schedule(true));
+
+    readColours(); clampView(); legend(); size(); renderBoard();
+  }
+})();
+</script>
+</body>
+</html>
