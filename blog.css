@@ -82,3 +82,4 @@ button.chip{color:var(--ink);line-height:inherit;margin:0}
 .soon-card small{font-family:var(--data);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid)}
 .soon-card b{font-family:var(--display);font-variation-settings:'wdth' 108,'wght' 800;font-size:19px;text-transform:uppercase;letter-spacing:-.015em;line-height:1.05}
 @media(max-width:520px){.asec-media{max-width:none}}
+.post h1,.post h1.long{font-size:clamp(30px,4.6vw,56px);line-height:1;letter-spacing:-.02em;max-width:24ch}
